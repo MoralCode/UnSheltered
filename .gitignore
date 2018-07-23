@@ -1,1 +1,4 @@
 vendor/*
+smarty/templates_c/*.php
+
+smarty/cache/*.php
