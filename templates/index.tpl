@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>YouthBnB</title>
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="../resources/style.css" type="text/css">
     <meta charset="UTF-8">
 
     <!-- This stuff will be useful if we make a web app for mobile devices
