@@ -4,14 +4,14 @@ mac users can skip steps 1-8
 
 1.  [download php](https://windows.php.net/downloads/releases/php-7.2.8-Win32-VC15-x64.zip) 
 2.  extract it to `C:\php`
-3.  go to the windows search bar and search for "environment variables" and click on the result from control panel
+3.  go to the windows search bar and search for "environment variables" and click "Edit System Environment Variables"
 4. click the "environment variables" button in the bottom right of the window that appears
 ![Step4](step4.png)
 5. Select the `Path` line, and click `Edit`
 ![Step5](step5.png)
-6. Click `New...`, type `C:\php` into the box and press `ENTER `
+6. Click `New...`, type `C:\php` into the box and press `ENTER `, your PATH should now have `;C:\php` on the end of it.
 ![Step6](step6.png)
-7. [Download] and install git Bash (if you dont already have it, try searching for "Git Bash")
+7. [Download](https://github.com/git-for-windows/git/releases/download/v2.18.0.windows.1/Git-2.18.0-64-bit.exe) and install git Bash (if you dont already have it, try searching for "Git Bash" to see if you do)
 8. Go to where you cloned the repository, right click inside the folder and select `Git Bash Here` (or open a terminal window and `cd` into the directory on a mac)
 9. go to [the composer download page](https://getcomposer.org/download/) and copy the clock of text under *Command Line Install*
 10. paste it into your git bash window
