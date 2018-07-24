@@ -1,5 +1,5 @@
 <?php // load Smarty library
-require('../vendor/smarty/smarty/libs/Smarty.class.php');
+require 'vendor/smarty/smarty/libs/Smarty.class.php';
 
 class Smarty_Setup extends Smarty {
 
@@ -7,7 +7,7 @@ class Smarty_Setup extends Smarty {
    {
         parent::__construct();
 
-        $this->setTemplateDir('../');
+        $this->setTemplateDir('templates/');
         $this->setCompileDir('./templates_c');
         $this->setConfigDir('./');
         $this->setCacheDir('./caches/');
