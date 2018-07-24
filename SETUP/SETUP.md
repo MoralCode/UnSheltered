@@ -7,7 +7,7 @@ mac users can skip steps 1-8
 3.  go to the windows search bar and search for "environment variables" and click on the result from control panel
 4. click the "environment variables" button in the bottom right of the window that appears
 ![Step4](step4.png)
-5. Click `Add`  
+5. Select the `Path` line, and click `Edit`
 ![Step5](step5.png)
 6. Click `New...`, type `C:\php` into the box and press `ENTER `
 ![Step6](step6.png)
