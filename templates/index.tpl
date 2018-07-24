@@ -1,6 +1,7 @@
+<!DOCTYPE HTML>
 <html>
 <head>
-    <title>YouthBnB</title>
+    <title>Unsheltered</title>
     <link rel="stylesheet" href="../resources/style.css" type="text/css">
     <meta charset="UTF-8">
 
@@ -9,9 +10,20 @@
     <meta name="apple-mobile-web-app-capable" content="yes">-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <style>
+
+
+
+
+
+    </style>
+
 </head>
 <body>
-    {$test}
-    hello
+
+  <div>
+    <h1> Unsheltered </h1>
+  </div>
+
 </body>
 </html>
