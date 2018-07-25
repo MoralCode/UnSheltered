@@ -3,9 +3,9 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 @app.route('/')
-def hello():
+def home():
     return render_template('homepage.html', test="Hello")
 
 @app.route('/signup')
-def hello():
+def signup():
     return render_template('signuppage.html')
