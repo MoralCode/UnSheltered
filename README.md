@@ -23,3 +23,5 @@ if on mac run `env FLASK_APP=backend.py flask run`
 if on windows run `set FLASK_APP=backend.py` then `flask run` 
 
 you should be provided with the URL for the local development server
+
+use the environment variable `FLASK_ENV=development` to enable development mode so you dont have to restart flask every time you make a change
