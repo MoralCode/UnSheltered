@@ -1,8 +1,132 @@
 <!DOCTYPE html>
 <head>
     <title>UnSheltered</title>
+    <link rel="stylesheet" href="../resources/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
+    <meta charset="UTF-8">
+
+    <!-- This stuff will be useful if we make a web app for mobile devices
+    <link rel="apple-touch-icon" href="answery-logo.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+        body, html{
+           margin: 0;
+           padding: 0; 
+           font-family: 'Libre Franklin', sans-serif;
+           letter-spacing: 0.1em;
+        }
+
+        div{
+            background-color: #f0ead6;
+            color: #0b5619;
+            width: 100%;
+            height: 2em;
+            margin: 0 0 10px 0;
+            padding: 0;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #login{
+            float:right;
+        
+   		}
+        #register{
+        	float:right;
+        }
+
+        details{
+            margin: 10px;
+          
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 500px;
+            margin-top: 20px;
+            margin-left: 50px;
+        }
+        td, th{
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            
+            
+        }
+    
+
+    </style>
 </head>
-<body>
-    <h1>UnSheltered</h1>
-    <p>{{ test }}, World!</p>
+<body>        
+        
+    <div>
+       <img src="https://vectr.com/ajharker/h2dOAdNMVI.svg?width=160&height=160&select=h2dOAdNMVIpage0" align="top" height="100px">
+     
+    <button id="login" type="button">Login</button> 
+    <button id="register" type="button">Register</button>    
+       
+    </div>  
+
+        <details>
+          <summary>Outside In</summary>
+            <table>
+              <tr>
+                <th>Address</th>
+                <th>Phone Number</th>
+                <th>Vacancies</th>
+             </tr>
+             <tr>
+                <td>1132 SW 13th Ave Portland, OR 97205</td>
+                <td>503.535.3800</td>
+                <td>5</td>
+             </tr>
+            </table>  
+        </details>
+        
+        <details>
+          <summary>New Avenues for Youth</summary>
+            <table>
+              <tr>
+                <th>Address (for Housing)</th>
+                <th>Phone Number</th>
+                <th>Vacancies</th>
+             </tr>
+             <tr>
+                <th>1220 SW Columbia Street
+Portland, OR 97201</th>
+                <th>503.224.4339</th>
+                <th>8</th>
+             </tr>
+            </table>  
+        </details>
+        
+        <details>
+          <summary>Harry's Mother Runaway Youth</summary>
+            <table>
+              <tr>
+                <th>Address</th>
+                <th>Phone Number (Crisis Line)</th>
+                <th>Vacancies</th>
+             </tr>
+             <tr>
+                <th>738 NE Davis Street Portland, Oregon 97232</th>
+                <th>503.233.8111</th>
+                <th>2</th>
+             </tr>
+            </table>  
+        </details>
+
+    {$test}
+
+    
+
+
+
+
+
 </body>
+</html>
+
