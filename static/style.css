@@ -19,20 +19,23 @@
          }
 
          img {
-            height: 50px;
-            width: 100px;
-            margin: -10px 0 0 0;
+            height: 100px;
+            width: 140px;
+            margin: -25px 0 0 0;
             margin-left: auto;
 	        margin-right: auto;
 	        display: block;
         }
          
          #login{
-             float:right;
-         
+             position: absolute;
+             right: 10px;
+             top: 5px;
             }
          #register{
-             float:right;
+             position: absolute;
+             right: 10px;
+             top: 25px;
          }
  
          details{
