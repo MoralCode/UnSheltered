@@ -72,6 +72,7 @@
     .shelterTitle {
         flex: 9; /* This can probably be replaced with bootstrap later */
         font-weight: bold;
+        font-size: 22px;
      }
 
      .shelterOccupancy {
@@ -79,6 +80,23 @@
      }
 
      .shelterOccupancy::after {
-         font-size: smaller;
-         content: " beds"
+        /*font-size: smaller;*/
+         content: " Beds"
      }
+
+
+    .alignright {
+        float: right;
+        text-align: right;
+        width: 70%;
+        height: 30px;
+
+        
+    }
+
+    .alignleft {
+        float: left;
+        width: 30%;
+        height: 30px;
+
+    }
