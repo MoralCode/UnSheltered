@@ -6,7 +6,7 @@
             letter-spacing: 0.1em;
          }
  
-         div{
+         div#titlebar{
              background-color: #f0ead6;
              color: #0b5619;
              width: 100%;
@@ -41,32 +41,35 @@
          flex-direction: column;
          justify-content: center;
          align-content: flex-start;
- 
+         display: block;
+         overflow: auto;
          width: 70%;
-         height: fit-content;
          margin: 0 auto;
-         background-color: red;
      }
  
      .shelter {
+         
          flex: 1;
          margin: 20px;
-         /* background-color: green; */
+         padding: 5px;
+         background-color: #eeeeee;
      }
 
      .shelterSummary {
+        display: flex;
         width: 100%;
-        color: blue;
-     }
+    }
  
     .shelterTitle {
-         margin: 0;
-         background-color: yellow;
-         font-weight: bold;
-         text-align: left;
+        flex: 9; /* This can probably be replaced with bootstrap later */
+        font-weight: bold;
      }
 
      .shelterOccupancy {
-        margin: 0;
-        text-align: right;
+        flex: 1; /* This can probably be replaced with bootstrap later */
+     }
+
+     .shelterOccupancy::after {
+         font-size: smaller;
+         content: " beds"
      }
