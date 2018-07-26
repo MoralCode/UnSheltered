@@ -11,53 +11,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-
-        body, html{
-           margin: 0;
-           padding: 0; 
-           font-family: 'Libre Franklin', sans-serif;
-           letter-spacing: 0.1em;
-        }
-
-        div{
-            background-color: #f0ead6;
-            color: #0b5619;
-            width: 100%;
-            height: 2em;
-            margin: 0 0 10px 0;
-            padding: 0;
-            font-size: 20px;
-            text-align: center;
-        }
-        
-        #login{
-            float:right;
-        
-   		}
-        #register{
-        	float:right;
-        }
-
-        details{
-            margin: 10px;
-          
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 500px;
-            margin-top: 10px;
-            margin-left: 50px;
-        }
-        td, th{
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-            
-            
-        }
     
+    body, html{
+            margin: 0;
+            padding: 0; 
+            font-family: 'Libre Franklin', sans-serif;
+            letter-spacing: 0.1em;
+         }
+ 
+         div{
+             background-color: #f0ead6;
+             color: #0b5619;
+             width: 100%;
+             height: 2em;
+             margin: 0 0 10px 0;
+             padding: 0;
+             font-size: 20px;
+             text-align: center;
+         }
+         
+         #login{
+             float:right;
+         
+            }
+         #register{
+             float:right;
+         }
+ 
+         details{
+             margin: 10px;
+           
+         }
+         /* Code to remove arrow:
+         https://discourse.wicg.io/t/ability-to-style-summary-element-arrow/1969/3
+         https://stackoverflow.com/questions/6195329/how-can-you-hide-the-arrow-that-is-displayed-by-default-on-the-html5-details-e/6202729#6202729
+          */
+         details summary::-webkit-details-marker {display:none;}
+         details summary {list-style-type: none;}
+ 
+     #sheltercontainer {
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-content: flex-start;
+ 
+         width: 70%;
+         height: fit-content;
+         margin: 0 auto;
+         background-color: red;
+     }
+ 
+     .shelter {
+         flex: 1;
+         margin: 20px;
+         /* background-color: green; */
+     }
 
+     .shelterSummary {
+        width: 100%;
+        color: blue;
+     }
+ 
+    .shelterTitle {
+         margin: 0;
+         background-color: yellow;
+         font-weight: bold;
+         text-align: left;
+     }
+
+     .shelterOccupancy {
+        margin: 0;
+        text-align: right;
+     }
     </style>
 </head>
 <body>        
@@ -69,56 +94,20 @@
     <button id="register" type="button">Register</button>    
        
     </div>  
-
-        <details>
-          <summary>Outside In</summary>
-            <table>
-              <tr>
-                <th>Address</th>
-                <th>Phone Number</th>
-                <th>Vacancies</th>
-             </tr>
-             <tr>
-                <td>1132 SW 13th Ave Portland, OR 97205</td>
-                <td>503.535.3800</td>
-                <td>5</td>
-             </tr>
-            </table>  
+    <div id="sheltercontainer">
+        <details class="shelter">
+            <summary class="shelterSummary">
+                <p class="shelterTitle">Awesome Minds Homeless Shelter</p>
+                <p class="shelterOccupancy">53</p>
+            </summary>
+            <p> TEST</p>
         </details>
-        
-        <details>
-          <summary>New Avenues for Youth</summary>
-            <table>
-              <tr>
-                <th>Address (for Housing)</th>
-                <th>Phone Number</th>
-                <th>Vacancies</th>
-             </tr>
-             <tr>
-                <td>1220 SW Columbia Street Portland, OR 97201</td>
-                <td>503.224.4339</td>
-                <td>8</td>
-             </tr>
-            </table>  
+        <details class="shelter">
+            <summary>Outside In</summary>
+                
         </details>
-        
-        <details>
-          <summary>Harry's Mother Runaway Youth</summary>
-            <table>
-              <tr>
-                <th>Address</th>
-                <th>Phone Number (Crisis Line)</th>
-                <th>Vacancies</th>
-             </tr>
-             <tr>
-                <td>738 NE Davis Street Portland, Oregon 97232</td>
-                <td>503.233.8111</td>
-                <td>2</td>
-             </tr>
-            </table>  
-        </details>
-
-    {$test}
+    </div>
+    {{ test }}
 
     
 
