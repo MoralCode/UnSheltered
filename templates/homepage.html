@@ -1,50 +1,28 @@
-<!DOCTYPE html>
-<head>
-    <title>UnSheltered</title>
-    <link rel="stylesheet" href="static/style.css" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
-    <meta charset="UTF-8">
+{% extends "layout.html" %}
 
-    <!-- This stuff will be useful if we make a web app for mobile devices
-    <link rel="apple-touch-icon" href="answery-logo.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    
+{% block title %}Home{% endblock %}
 
-</head>
-<body>        
-        
-    <div id="titlebar">
-       <img src="https://vectr.com/ajharker/a1kj2IcWwB.svg?select=a1kj2IcWwBpage0"  >
-     
-    <button id="login" type="button">Login</button> 
-   <a href="/signup">
-    <button id="register" type="button">Register</button>    
-</a>
-    </div>  
-    <div id="sheltercontainer">
+{% block head %}
+  {{ super() }}
+  <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
+
+
+{% endblock %}
+
+{% block content %}
+<div id="sheltercontainer">
+    {% for shelter in shelters %}
         <details class="shelter">
             <summary class="shelterSummary">
-                <span class="shelterTitle">Awesome Minds Homeless Shelter</span>
-                <span class="shelterOccupancy">53</span>
-            </summary>
-            <p> TEST</p>
-        </details>
-        <details class="shelter">
-            <summary>Outside In</summary>
-                
-        </details>
-        <details class="shelter">
-            <summary class="shelterSummary">
-                <span class ="shelterTitle"> Placeholder Shelter</span>
-                <span class = "shelterOccupancy">42</span>
+                <span class="shelterTitle">{{ shelter.name }}</span>
+                <span class="shelterOccupancy">{{ shelter.bedsFree }}</span>
             </summary>
             
             <div class="infoContainer">
+
                 <div class="infobox" id="selected"> <!--the id thing is for the background color of the individual box, new background colors for a different box requires a new selected id (new css class)-->
-                <h4 class="alignleft">Info on the left:</h4>
-                <p class="alignright">Info on the right, about medium size-ish</p>
+                    <h4 class="alignleft">Info on the left: </h4>
+                    <p class="alignright">Info on the right, about medium size-ish</p>
                 </div>
 
                 <div class="infobox">
@@ -53,10 +31,10 @@
                 </div>
 
                 <div class="infobox">
-                <h4 class="alignleft">Shorter info:</h4>
-                <p class="alignright">short things</p>
+                    <h4 class="alignleft">Shorter info: </h4>
+                    <p class="alignright">short things</p>
                 </div>
-
+              
                 <div class="infobox">
                     <h4 class="aligntoptitle">Placeholder Information 2:</h4>
                     <p class="aligntoptext">Placeholder Information 2 corresponding short</p>
@@ -81,18 +59,37 @@
                 </div>
                 <!--filler end-->
 
+                <div class="infobox">
+                    <h4 class="aligntop">Placeholder Information 2:</h4>
+                    <p class="aligntop">Placeholder Information 2 corresponding short</p>
+                </div>
+
+                <!--Checkboxes start here ! ! ! BE ADVISED ! ! !-->
+                <!--A SOLO CHECKBOX-->
+                <label class="container">Solo 1
+                    <input type="checkbox" checked="checked" disabled> <br>
+                    <span class="checkmark"></span>
+                </label>
+                <!--CHECKBOXES AS A UNIT, PART OF A FLEXBOX-->
+                <div class="infoxbox">
+                    <label class="container">List 1
+                        <input type="checkbox" disabled> <br>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">List 2
+                        <input type="checkbox" disabled> <br>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">List 3
+                        <input type="checkbox" checked="checked" disabled> <br>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
+
+
             </div>
-
         </details>
-    </div>
-    {{ test }}
-
-    
-
-
-
-
-
-</body>
-</html>
-
+    {% endfor %}    
+</div>
+{% endblock %}
