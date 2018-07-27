@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- This stuff will be useful if we make a web app for mobile devices
+    <link rel="apple-touch-icon" href="answery-logo.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>{% block title %}{% endblock %} - UnSheltered</title>
+    {% endblock %}
+  </head>
+  <body>
+    <header id="site-header">
+      <img src="https://vectr.com/ajharker/a1kj2IcWwB.svg?select=a1kj2IcWwBpage0"  >
+      {# <ul>
+    {% if g.user %}
+      <li><span>{{ g.user['username'] }}</span>
+      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+    {% else %}
+      <li><a href="{{ url_for('auth.register') }}">Register</a>
+      <li><a href="{{ url_for('auth.login') }}">Log In</a>
+    {% endif %}
+  </ul> #}
+      
+      
+      <button id="login" type="button">Login</button> 
+      <a href="/signup">
+        <button id="register" type="button">Register</button>    
+      </a> 
+    </header>
+    <section id="content">
+      {% block content %}
+      {% endblock %}
+    </section>
+    <footer id="site-footer">
+      
+    </footer>
+  </body>
+</html>
