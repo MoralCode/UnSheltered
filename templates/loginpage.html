@@ -1,29 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-body {background-color:#B6F9C9;}
-h1 {
-    font-family: "Comic Sans MS", Sans-serif;
-    text-align: center;
-}
-form { 
-	text-align: center; 
-    font-family: "Comic Sans MS", Sans-serif;
-} 
+{% extends "layout.html" %}
 
-</style>
+{% block title %}Login{% endblock %}
 
-<br><br><br><br><br><br>
-<h1> Login </h1> 
+{% block head %}
+  {{ super() }}
 
-<body>
-<form>
-  Username: <input type="text" name="username"><br> <br> <br>
-  Password: <input type="text" name="password">
-</form>
+  <style>
+    body {background-color:#B6F9C9;}
+    h1 {
+        font-family: "Comic Sans MS", Sans-serif;
+        text-align: center;
+    }
+    form { 
+        text-align: center; 
+        font-family: "Comic Sans MS", Sans-serif;
+    } 
+    
+    </style>
 
-</body>
-</head>
-</html>
+{% endblock %}
 
+{% block content %}
+    <h1> Login </h1> 
+    <form>
+    Username: <input type="text" name="username"><br> <br> <br>
+    Password: <input type="text" name="password">
+    </form>
+{% endblock %}

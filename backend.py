@@ -20,9 +20,14 @@ def home():
 def signup():
     return render_template('signuppage.html')
 
+@app.route('/login')
+def login():
+    return render_template('loginpage.html')
+
 @app.route('/account')
 def account():
     return render_template('account.html')
+
 
 def getAllShelters():
     shelters = []
