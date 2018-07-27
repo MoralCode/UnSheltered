@@ -3,12 +3,12 @@
         body, html{
             margin: 0;
             padding: 0; 
-            font-family: 'Libre Franklin', sans-serif;
+            font-family: 'Libre Franklin', sans-serif; /* i think you can directly reference the font URL here instead of linking it to the HTML -Adrian */
             letter-spacing: 0.1em;
             background-color: #fcfdff;
          }
  
-         div#titlebar{
+         header#site-header{
              background-color: #2ee571;
              color: hsl(131, 77%, 19%);
              width: 100%;
@@ -19,7 +19,7 @@
              text-align: center;
          }
 
-         img {
+         header img {
             height: 100px;
             width: 140px;
             margin: -25px 0 0 0;
