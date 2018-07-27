@@ -79,14 +79,17 @@
         display: flex;
         flex-grow: 1;
         flex-shrink: 1;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
      }
 
      .infobox {
         clear: both;
-        margin: 7.5px;
+        margin: 15px;
         flex-wrap: wrap;
-        min-width: 15%
-         }
+        min-width: 15%;
+        max-width: 35%;
+    }
 
      .shelterSummary {
         display: flex;
@@ -133,8 +136,13 @@
 
     }
     
-    .aligntop {
+    .aligntoptitle {
         text-align: center;
+        min-height: 20px;
+    }
+    .aligntoptext {
+        text-align: center;
+        min-height: 40px;
     }
 
 /*CHECKMARK STUFF BEGINS HERE ! ! ! BE ADVISED ! ! !*/
