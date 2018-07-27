@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 flask = "*"
 gunicorn = "*"
+firebase-admin = "*"
+google-cloud-firestore = "*"
 
 [dev-packages]
 
