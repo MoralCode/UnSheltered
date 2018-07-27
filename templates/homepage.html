@@ -19,21 +19,50 @@
             </summary>
             
             <div class="infoContainer">
-                    <div class="infobox" id="selected"> <!--the id thing is for the background color of the individual box, new background colors for a different box requires a new selected id (new css class)-->
-                    <h4 class="alignleft">Info on the left:</h4>
+
+                <div class="infobox" id="selected"> <!--the id thing is for the background color of the individual box, new background colors for a different box requires a new selected id (new css class)-->
+                    <h4 class="alignleft">Info on the left: </h4>
                     <p class="alignright">Info on the right, about medium size-ish</p>
-                    </div>
-    
-                    <div class="infobox">
-                    <h4 class="aligntop">Placeholder Information 2:</h4>
-                    <p class="aligntop">Placeholder Information 2 corresponding infouyhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
-                    </div>
-    
-                    <div class="infobox">
-                    <h4 class="alignleft">Shorter info:</h4>
-                    <p class="alignright">short things</p>
-                    </div>
                 </div>
+
+                <div class="infobox">
+                    <h4 class="aligntop">Placeholder Information 2:</h4>
+                    <p class="aligntop">Placeholder Information 2 corresponding info but it's really looooooooooonnnnnnnnnnnnggggggg</p>
+                </div>
+
+                <div class="infobox">
+                    <h4 class="alignleft">Shorter info: </h4>
+                    <p class="alignright">short things</p>
+                </div>
+
+                <div class="infobox">
+                    <h4 class="aligntop">Placeholder Information 2:</h4>
+                    <p class="aligntop">Placeholder Information 2 corresponding short</p>
+                </div>
+
+                <!--Checkboxes start here ! ! ! BE ADVISED ! ! !-->
+                <!--A SOLO CHECKBOX-->
+                <label class="container">Solo 1
+                    <input type="checkbox" checked="checked" disabled> <br>
+                    <span class="checkmark"></span>
+                </label>
+                <!--CHECKBOXES AS A UNIT, PART OF A FLEXBOX-->
+                <div class="infoxbox">
+                    <label class="container">List 1
+                        <input type="checkbox" disabled> <br>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">List 2
+                        <input type="checkbox" disabled> <br>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">List 3
+                        <input type="checkbox" checked="checked" disabled> <br>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
+            </div>
         </details>
     {% endfor %}    
 </div>
