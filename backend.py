@@ -35,7 +35,7 @@ def getAllShelters():
     shelters_ref = db.collection(u'shelters')
     shelter_docs = shelters_ref.get()
     for shelter in shelter_docs:
-        shelters.append(shelter.to_dict())
-        print(str(type(shelter.to_dict())))
-
+        shelterEntry = shelter.to_dict()
+        shelterEntry['id'] = shelter.id
+        shelters.append(shelterEntry)
     return shelters
