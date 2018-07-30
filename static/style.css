@@ -61,7 +61,7 @@
          margin: 0 auto;
      }
  
-     .shelter {
+     .shelterListEntry {
          
          flex: 1;
          margin: 20px;
@@ -213,3 +213,5 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+
+  

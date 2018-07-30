@@ -1,6 +1,6 @@
 <div id="sheltercontainer">
         {% for shelter in shelters %}
-            <details class="shelter">
+            <details class="shelterListEntry">
                 <summary class="shelterSummary">
                     <span class="shelterTitle">{{ shelter.name }}</span>
                     <span class="shelterOccupancy">{{ shelter.capacity - shelter.bedsoccupied }}</span>
@@ -89,4 +89,8 @@
                 {% endblock %}
             </details>
         {% endfor %} 
+
+        {% block newform %}
+        {% endblock %}
+        
     </div>
