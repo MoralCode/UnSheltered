@@ -14,8 +14,8 @@
     {% for shelter in shelters %}
         <details class="shelter">
             <summary class="shelterSummary">
-                <span class="shelterTitle">{{ shelter.name }}</span>
-                <span class="shelterOccupancy">{{ shelter.bedsFree }}</span>
+                <span class="shelterTitle">{{ shelter['name'] }}</span>
+                <span class="shelterOccupancy">{{ shelter['capacity']-shelter['bedsoccupied'] }}</span>
 
             </summary>
             
