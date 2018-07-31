@@ -215,3 +215,11 @@
     transform: rotate(45deg);
   }
 
+  #site-footer{
+      position:fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #e3e7ed;
+      text-align: center;
+  }
