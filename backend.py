@@ -26,7 +26,7 @@ def login():
 
 @app.route('/account')
 def account():
-    return render_template('account.html')
+    return render_template('account.html', shelters=getAllShelters())
 
 
 def getAllShelters():
