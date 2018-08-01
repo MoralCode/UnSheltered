@@ -86,6 +86,10 @@ def callbackHandling():
     }
     return redirect('/account')
 
+@app.route('/volunteer')
+def volunteer():
+    return render_template('volunteer.html')    
+
 @app.route('/account')
 @requires_auth
 def account():

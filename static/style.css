@@ -236,3 +236,8 @@
       background-color: #e3e7ed;
       text-align: center;
   }
+#calendar{
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+}
