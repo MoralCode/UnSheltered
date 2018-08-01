@@ -67,10 +67,6 @@ def requires_auth(f):
 def home():
     return render_template('homepage.html', shelters=getAllShelters())
 
-@app.route('/signup')
-def signup():
-    return render_template('signuppage.html')
-
 @app.route('/login')
 def login():
     return auth0.authorize_redirect(redirect_uri=url_for('callbackHandling', _external=True), audience=AUTH0_AUDIENCE)
