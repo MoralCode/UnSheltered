@@ -15,6 +15,11 @@ from authlib.flask.client import OAuth
 from six.moves.urllib.parse import urlencode
 from dotenv import load_dotenv, find_dotenv
 
+#CONSTANTS
+JWT_PAYLOAD = 'jwt_payload'
+PROFILE_KEY = 'profile'
+
+
 app = Flask(__name__)
 oauth = OAuth(app)
 db = firestore.Client()
@@ -73,8 +78,8 @@ def callbackHandling():
     resp = auth0.get('userinfo')
     userinfo = resp.json()
 
-    session[constants.JWT_PAYLOAD] = userinfo
-    session[constants.PROFILE_KEY] = {
+    session[JWT_PAYLOAD] = userinfo
+    session[PROFILE_KEY] = {
         'user_id': userinfo['sub'],
         'name': userinfo['name'],
         'picture': userinfo['picture']
@@ -86,8 +91,8 @@ def callbackHandling():
 def account():
     return render_template(
         'account.html',
-        userinfo=session[constants.PROFILE_KEY],
-        userinfo_pretty=json.dumps(session[constants.JWT_PAYLOAD], indent=4)
+        userinfo=session[PROFILE_KEY],
+        userinfo_pretty=json.dumps(session[JWT_PAYLOAD], indent=4)
     )
 
 
