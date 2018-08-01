@@ -1,16 +1,59 @@
-from flask import Flask, render_template
+from flask import Flask
+from flask import jsonify
+from flask import redirect
+from flask import render_template
+from flask import session
+from flask import url_for
 import firebase_admin
-import os
+from functools import wraps
+from os import environ
+from werkzeug.exceptions import HTTPException
 from firebase_admin import credentials
 from google.cloud import firestore
 import json
-
-#cred = credentials.Certificate("config/firebasesecrets.json")
-#firebase_admin.initialize_app(cred)
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'config/firebasesecrets.json'
+from authlib.flask.client import OAuth
+from six.moves.urllib.parse import urlencode
+from dotenv import load_dotenv, find_dotenv
 
 app = Flask(__name__)
+oauth = OAuth(app)
 db = firestore.Client()
+
+app.config['SECRET_KEY'] = environ['FLASK_SECRET_KEY']
+base_url='https://' + 'unsheltered.auth0.com'
+AUTH0_AUDIENCE = base_url + '/userinfo'
+
+auth0 = oauth.register(
+    'auth0',
+    client_id = environ['AUTH0_CLIENT_ID'],
+    client_secret = environ['AUTH0_CLIENT_SECRET'],
+    api_base_url = base_url,
+    access_token_url = base_url + '/oauth/token',
+    authorize_url = base_url + '/authorize',
+    client_kwargs = {
+        'scope': 'openid profile',
+    },
+)
+
+def isLoggedIn():
+    # print('trolololol')
+    # print('profile' in session)
+    # print(session)
+    return ('profile' in session)
+
+@app.context_processor
+def injectLoginState():
+    return dict(loggedin=isLoggedIn())
+
+def requires_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        if not isLoggedIn():
+            return redirect('/login')
+        return f(*args, **kwargs)
+
+    return decorated
+
 
 @app.route('/')
 def home():
@@ -22,11 +65,40 @@ def signup():
 
 @app.route('/login')
 def login():
-    return render_template('loginpage.html')
+    return auth0.authorize_redirect(redirect_uri=url_for('callbackHandling', _external=True), audience=AUTH0_AUDIENCE)
+
+@app.route('/logincallback')
+def callbackHandling():
+    auth0.authorize_access_token()
+    resp = auth0.get('userinfo')
+    userinfo = resp.json()
+
+    session[constants.JWT_PAYLOAD] = userinfo
+    session[constants.PROFILE_KEY] = {
+        'user_id': userinfo['sub'],
+        'name': userinfo['name'],
+        'picture': userinfo['picture']
+    }
+    return redirect('/account')
 
 @app.route('/account')
+@requires_auth
 def account():
-    return render_template('account.html', shelters=getAllShelters())
+    return render_template(
+        'account.html',
+        userinfo=session[constants.PROFILE_KEY],
+        userinfo_pretty=json.dumps(session[constants.JWT_PAYLOAD], indent=4)
+    )
+
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    params = {
+        'returnTo': url_for('home', _external=True),
+        'client_id': AUTH0_CLIENT_ID
+        }
+    return redirect(auth0.api_base_url + '/v2/logout?' + urlencode(params))
 
 
 def getAllShelters():

@@ -208,3 +208,4 @@ templates_c/
 caches/
 .vscode/
 config/*firebase*.json
+dev_*.*

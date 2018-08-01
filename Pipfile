@@ -8,6 +8,10 @@ flask = "*"
 gunicorn = "*"
 firebase-admin = "*"
 google-cloud-firestore = "*"
+python-dotenv = "*"
+requests = "*"
+authlib = "*"
+six = "*"
 
 [dev-packages]
 
