@@ -24,6 +24,9 @@ app = Flask(__name__)
 oauth = OAuth(app)
 db = firestore.Client()
 
+if environ['GOOGLE_APPLICATION_CREDENTIALS'] is '':
+    environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'config/firebasesecrets.json'
+
 app.config['SECRET_KEY'] = environ['FLASK_SECRET_KEY']
 base_url='https://' + 'unsheltered.auth0.com'
 AUTH0_AUDIENCE = base_url + '/userinfo'
