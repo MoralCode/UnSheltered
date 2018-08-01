@@ -2,9 +2,12 @@
         {% for shelter in shelters %}
             <details class="shelterListEntry">
                 <summary class="shelterSummary">
-                    <span class="shelterTitle">{{ shelter.name }}</span>
+                    <span class="shelterTitle">
+                        {{ shelter.name }}
+
+                        <i title ="Has Restrictions" class="fas fa-exclamation-triangle warningColor shelterWarningIcon"></i>
+                    </span>
                     <span class="shelterOccupancy">{{ shelter.capacity - shelter.bedsoccupied }}</span>
-    
                 </summary>
                 
                 <div class="infoContainer">
