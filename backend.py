@@ -128,8 +128,7 @@ def account():
             int(form.getlist('shelter-capacity')[0]),
             bedsOccupied
         )
-
-        processShelterEdit(shelter)
+        processShelterEdit(shelter, (form.getlist('deletion-checkbox')[0] == 'true'))
         return redirect('/account')
 
 @app.route('/logout')
