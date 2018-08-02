@@ -99,7 +99,11 @@ def callbackHandling():
 
 @app.route('/volunteer')
 def volunteer():
-    return render_template('volunteer.html')    
+    return render_template('volunteer.html') 
+
+@app.route('/homelessRights')
+def homelessRights():
+    return render_template('homelessRights.html')   
 
 @app.route('/account', methods=['GET', 'POST'])
 def account():
