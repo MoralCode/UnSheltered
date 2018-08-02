@@ -91,6 +91,7 @@ def account():
     if isLoggedIn():
         return render_template(
             'account.html',
+            shelters=getSheltersOwnedByCurrentUser()
             )
             # userinfo=session[PROFILE_KEY], #these are ost likely unnecessary
             # userinfo_pretty=json.dumps(session[JWT_PAYLOAD], indent=4)
@@ -122,3 +123,13 @@ def getAllShelters():
         shelterEntry['id'] = shelter.id
         shelters.append(shelterEntry)
     return shelters
+
+def getSheltersOwnedByCurrentUser():
+    allShelters = getAllShelters()
+    userShelters = []
+
+    for shelter in allShelters:
+        print(shelter['ownedby'])
+        if shelter['ownedby'] == session[PROFILE_KEY]['user_id']:
+            userShelters.append(shelter)
+    return userShelters
