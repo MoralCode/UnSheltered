@@ -301,7 +301,9 @@
 
 .rightsText{
     vertical-align: middle;
-    
+    text-align: justify; 
+    margin-left:40px;
+    margin-right:40px;
 }
 #ventoTitle{
     text-decoration: underline;
