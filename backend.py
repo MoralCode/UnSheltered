@@ -53,23 +53,20 @@ def isLoggedIn():
 def injectLoginState():
     return dict(loggedin=isLoggedIn())
 
-def requires_auth(f):
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        if not isLoggedIn():
-            return redirect('/login')
-        return f(*args, **kwargs)
+# def requires_auth(f):
+#     @wraps(f)
+#     def decorated(*args, **kwargs):
+#         if not isLoggedIn():
+#             return redirect('/account')
+#         return f(*args, **kwargs)
 
-    return decorated
+#     return decorated
 
 
 @app.route('/')
 def home():
     return render_template('homepage.html', shelters=getAllShelters())
 
-@app.route('/login')
-def login():
-    return auth0.authorize_redirect(redirect_uri=url_for('callbackHandling', _external=True), audience=AUTH0_AUDIENCE)
 
 @app.route('/logincallback')
 def callbackHandling():
@@ -90,13 +87,19 @@ def volunteer():
     return render_template('volunteer.html')    
 
 @app.route('/account')
-@requires_auth
 def account():
-    return render_template(
-        'account.html',
-        userinfo=session[PROFILE_KEY],
-        userinfo_pretty=json.dumps(session[JWT_PAYLOAD], indent=4)
-    )
+    if isLoggedIn():
+        return render_template(
+            'account.html',
+            )
+            # userinfo=session[PROFILE_KEY], #these are ost likely unnecessary
+            # userinfo_pretty=json.dumps(session[JWT_PAYLOAD], indent=4)
+        
+    else:
+        return auth0.authorize_redirect(
+            redirect_uri=url_for('callbackHandling', _external=True),
+            audience=AUTH0_AUDIENCE
+            )
 
 
 @app.route('/logout')
