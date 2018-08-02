@@ -103,7 +103,11 @@ def volunteer():
 
 @app.route('/homelessRights')
 def homelessRights():
-    return render_template('homelessRights.html')   
+    return render_template('homelessRights.html')  
+
+@app.route('/about')
+def about():
+    return render_template('about.html')  
 
 @app.route('/account', methods=['GET', 'POST'])
 def account():
