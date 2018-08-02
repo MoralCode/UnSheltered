@@ -20,9 +20,11 @@
         <label for="donation-link">Link to accept donations:</label>
         <input type="text" name="donation-link">
         <br>
+        <label for="deletion-checkbox">Delete this shelter? </label>
+        <input type="checkbox" name="deletion-checkbox" value="true">
+        <br>
         {% if shelter is defined %}
         <input type="submit" value="Update Shelter Listing">
-        <input type="submit" value="Delete Shelter Listing">
         {% elif shelter is not defined %}
         <input type="submit" value="Add Shelter Listing">
         {% endif %}
