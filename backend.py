@@ -136,7 +136,12 @@ def account():
             int(form.getlist('shelter-capacity')[0]),
             bedsOccupied
         )
-        processShelterEdit(shelter, (form.getlist('deletion-checkbox')[0] == 'true'))
+        try:
+            shouldDelete = form.getlist('deletion-checkbox')[0] == 'true'
+        except IndexError:
+            shouldDelete = False
+
+        processShelterEdit(shelter, shouldDelete)
         return redirect('/account')
 
 @app.route('/logout')
