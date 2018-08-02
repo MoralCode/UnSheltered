@@ -20,4 +20,10 @@
         <label for="donation-link">Link to accept donations:</label>
         <input type="text" name="donation-link">
         <br>
-    </form>
+        {% if shelter is defined %}
+        <input type="submit" value="Update Shelter Listing">
+        <input type="submit" value="Delete Shelter Listing">
+        {% elif shelter is not defined %}
+        <input type="submit" value="Add Shelter Listing">
+        {% endif %}
+     </form>
