@@ -6,6 +6,13 @@ class Shelter(object):
         self._capacity = capacity
         self._bedsOccupied = bedsOccupied
 
+
+    @classmethod
+    def defaults(cls):
+        "Initialize MyData from a file"
+        return cls("Placeholder", 1234, "tst", 333, 111)
+
+
     # def __init__(self, **entries):
     #     self.__dict__.update(entries)
 
@@ -45,7 +52,7 @@ class Shelter(object):
         return self._capacity
 
     @capacity.setter
-    def owner(self, capacity):
+    def capacity(self, capacity):
         self._capacity = capacity
 
 
@@ -54,7 +61,7 @@ class Shelter(object):
         return self._bedsOccupied
 
     @bedsOccupied.setter
-    def owner(self, bedsOccupied):
+    def bedsOccupied(self, bedsOccupied):
         self._bedsOccupied = bedsOccupied
 
 
@@ -82,14 +89,15 @@ class Shelter(object):
         return self.capacity-self.bedsOccupied
 
     def to_dict(self):
-        shelter = []
-        shelter['name'] = this.name
-        shelter['id'] = this.id
-        shelter['owner'] = this.owner
-        shelter['capacity'] = this.capacity
-        shelter['bedsOccupied'] = this.bedsOccupied
+        #these are the names that will be in the database
+        shelter = {
+            'name': self.name,
+            'ownedby': self.owner,
+            'capacity': self.capacity,
+            'bedsoccupied': self.bedsOccupied
+        }
         return shelter
 
     def __repr__(self):
-        return u'City(name={}, id={}, owner={}, capacity={}, bedsOccupied={})'.format(
+        return u'Shelter(name={}, id={}, owner={}, capacity={}, bedsOccupied={})'.format(
             self.name, self.id, self.owner, self.capacity, self.bedsOccupied)
