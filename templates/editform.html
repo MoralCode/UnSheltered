@@ -1,23 +1,23 @@
 
-        Name:<br>
-        <input type="text" name="shelter-name">
     <form action="{{ url_for('account') }}" name="shelterform" method="post">
         <input type="text" name="shelter-id" value="{{ shelter.id if shelter is defined else '' }}" hidden>
+        <label for="shelter-name">Name:</label>
         <input type="text" name="shelter-name"  value="{{ shelter.name if shelter is defined else '' }}">
         <br>
-        Location:<br>
+        <label for="shelter-location">Location:</label>
         <input type="text" name="shelter-location"><!-- STUCK HERE. how best to handle address in HTML forms?-->
         <br>
-        Phone Number:<br>
+        <label for="shelter-phone">Phone Number:</label>
         <input type="text" name="shelter-phone">
         <br>
-        Number of Total Beds:<br>
+        <label for="shelter-capacity">Housing Capacity</label>
         <input type="number" name="shelter-capacity"  value="{{ shelter.capacity if shelter is defined else '' }}">
+        <label for="shelter-capacity">beds</label>
         <br>
-        Number of Available Beds:<br>
+        <label for="available-beds">Spaces Free:</label> <!-- should we do beds occupied here?-->
         <input type="number" name="available-beds">
         <br>
-        Donation Link:<br>
+        <label for="donation-link">Link to accept donations:</label>
         <input type="text" name="donation-link">
         <br>
     </form>
