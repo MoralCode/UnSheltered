@@ -298,3 +298,11 @@
     width: 50px;
     height: auto;
 }
+
+.rightsText{
+    vertical-align: middle;
+    
+}
+#ventoTitle{
+    text-decoration: underline;
+}
