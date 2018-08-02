@@ -1,13 +1,13 @@
 class Shelter(object):
-    # def __init__(self, name, id, owner, capacity, bedsOccupied):
-    #     self.name = name
-    #     self.id = id
-    #     self.owner = owner
-    #     self.capacity = capacity
-    #     self.bedsOccupied = bedsOccupied
+    def __init__(self, name, id, owner, capacity, bedsOccupied):
+        self._name = name
+        self._id = id
+        self._owner = owner
+        self._capacity = capacity
+        self._bedsOccupied = bedsOccupied
 
-    def __init__(self, **entries):
-        self.__dict__.update(entries)
+    # def __init__(self, **entries):
+    #     self.__dict__.update(entries)
 
     #
     # GETTERS AND SETTERS
@@ -15,47 +15,47 @@ class Shelter(object):
     
     @property
     def name(self):
-        return self.name
+        return self._name
 
     @name.setter
     def name(self, name):
-        self.name = name
+        self._name = name
 
 
     @property
     def id(self):
-        return self.id
+        return self._id
 
     @id.setter
     def id(self, id):
-        self.id = id
+        self._id = id
 
 
     @property
     def owner(self):
-        return self.owner
+        return self._owner
 
     @owner.setter
     def owner(self, owner):
-        self.owner = owner
+        self._owner = owner
 
 
     @property
     def capacity(self):
-        return self.capacity
+        return self._capacity
 
     @capacity.setter
     def owner(self, capacity):
-        self.capacity = capacity
+        self._capacity = capacity
 
 
     @property
     def bedsOccupied(self):
-        return self.bedsOccupied
+        return self._bedsOccupied
 
     @bedsOccupied.setter
     def owner(self, bedsOccupied):
-        self.bedsOccupied = bedsOccupied
+        self._bedsOccupied = bedsOccupied
 
 
 

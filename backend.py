@@ -14,6 +14,7 @@ import json
 from authlib.flask.client import OAuth
 from six.moves.urllib.parse import urlencode
 from dotenv import load_dotenv, find_dotenv
+from classes.Shelter import Shelter
 
 #CONSTANTS
 JWT_PAYLOAD = 'jwt_payload'
@@ -120,8 +121,17 @@ def getAllShelters():
     shelter_docs = shelters_ref.get()
     for shelter in shelter_docs:
         shelterEntry = shelter.to_dict()
-        shelterEntry['id'] = shelter.id
-        shelters.append(shelterEntry)
+        print(shelterEntry)
+        shelters.append(
+            Shelter(
+                shelterEntry['name'],
+                shelter.id,
+                shelterEntry['ownedby'],
+                shelterEntry['capacity'],
+                shelterEntry['bedsoccupied']
+                )
+            )
+        # shelters.append(shelterEntry)
     return shelters
 
 def getSheltersOwnedByCurrentUser():
