@@ -1,50 +1,92 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    {% block head %}
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"> <!--This is for Font Awesome-->
-    
-    <script src="https://use.fontawesome.com/b0eda0fe6e.js"></script>
 
-    <!-- This stuff will be useful if we make a web app for mobile devices
+<head>
+  {% block head %}
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
+  <!--This is for Font Awesome-->
+
+  <script src="https://use.fontawesome.com/b0eda0fe6e.js"></script>
+
+  <!-- This stuff will be useful if we make a web app for mobile devices
     <link rel="apple-touch-icon" href="answery-logo.png">
     <meta name="apple-mobile-web-app-capable" content="yes">-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <title>{% block title %}{% endblock %} - UnSheltered</title>
-    {% endblock %}
-  </head>
-  <body>
-  
-      <header id="site-header">
-      <a href= "/">
-      <img src="https://vectr.com/ajharker/a1kj2IcWwB.svg?select=a1kj2IcWwBpage0"  >
-      </a>
+  <title>{% block title %}{% endblock %} - UnSheltered</title>
+  {% endblock %}
+</head>
 
-      <div class="dropdown1">
-          <button class="dropbtn1">Menu</button>
-          <div class="dropdown-content1">
-            <a href="/volunteer">Volunteer Opportunities</a>
-            <a href="/homelessRights">Homeless Rights</a>
-            <a href="/about">About Us</a>
-            <a href="/account">Account</a>
-            {% if loggedin %}
-            <a href = "/logout">Log Out</a>
-            {% endif %}
+<body>
+  <header id="site-header">
+
+    <div class="container-fluid">
+      <div class="row justify-content-center align-items-center" style="height: 90px" ;>
+        <div class="d-lg-none col-6 order-4">
+          <div class="dropdown">
+            <button type="button" class="btn btn-headerprimary dropdown-toggle" data-toggle="dropdown">Menu</button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="/volunteer">Volunteer Opportunities</a>
+              <a class="dropdown-item" href="/account">Account</a>
+              <a class="dropdown-item" href="/about">About Us</a>
+              <a class="dropdown-item" href="/homelessRights">Homeless Rights</a>
+              {% if loggedin %}
+              <a class="dropdown-item" href="/logout">Log Out</a>
+              {% endif %}
+            </div>
           </div>
         </div>
+        <div class="col-6 col-lg-2 order-3">
+          <a href="/">
+            <img src="https://vectr.com/ajharker/a1kj2IcWwB.svg?select=a1kj2IcWwBpage0">
+          </a>
+        </div>
+        <div class="d-none d-lg-block col-lg-2 order-2">
+          <a href="/account" class="btn btn-headerprimary">
+            <h5>Account</h5>
+          </a>
+        </div>
+        <div class="d-none d-lg-block col-lg-3 order-1">
+          <a href="/volunteer" class="btn btn-headerprimary">
+            <h5>Volunteer Opportunities</h5>
+          </a>
+        </div>
+        <div class="d-none d-lg-block col-lg-2 order-4">
+          <a href="/about" class="btn btn-headerprimary">
+            <h5>About Us</h5>
+          </a>
+        </div>
+        <div class="d-none d-lg-block col-lg-3 order-5">
+          <a href="/homelessRights" class="btn btn-headerprimary">
+            <h5>Homeless Rights</h5>
+          </a>
+        </div>
+      </div>
+    </div>
 
-    
-    </header>
-    <section id="content">
-      {% block content %}
-      {% endblock %}
-    </section>
-    <footer id="site-footer">
-      <p>Copyright 2018 ~ NWAPW Project</p>
-    </footer>
-  </body>
+
+  </header>
+  <section id="content">
+    {% block content %} {% endblock %}
+  </section>
+  <footer id="site-footer">
+    <p>Copyright 2018 ~ NWAPW Project</p>
+  </footer>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+</body>
+
 </html>
