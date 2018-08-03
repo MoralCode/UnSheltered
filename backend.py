@@ -51,7 +51,7 @@ def getCurrentUserId():
 
 
 def processShelterEdit(shelter, delete=False):
-    if shelter.id == '':
+    if shelter['id'] == '':
         addShelter(shelter)
     elif delete:
         deleteShelter(shelter)
@@ -123,10 +123,10 @@ def account():
 
         shelter = {
             'name': form.getlist('shelter-name')[0],
-            'id': form.getlist('shelter-id')[0],
-            'owner': getCurrentUserId(),
+            'id': form.getlist('shelter-id')[0],#for checking if its a new shelter or editing one
+            'owner': str(getCurrentUserId()),
             'capacity': int(form.getlist('shelter-capacity')[0]),
-            'spotsFree': int(form.getlist('available-beds')[0])
+            'bedsFree': int(form.getlist('available-beds')[0])
         }
         try:
             shouldDelete = form.getlist('deletion-checkbox')[0] == 'true'
