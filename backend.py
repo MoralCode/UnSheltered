@@ -74,7 +74,7 @@ def injectLoginState():
 
 @app.route('/')
 def home():
-    return render_template('homepage.html', shelters=getAllShelters())
+    return render_template('homepage.html', shelters=getShelters())
 
 
 @app.route('/logincallback')
@@ -109,7 +109,7 @@ def account():
         if isLoggedIn():
             return render_template(
                 'account.html',
-                shelters=getSheltersOwnedByCurrentUser()
+                shelters=getShelters({'owner': str(getCurrentUserId())})
                 )
             # userinfo=session[PROFILE_KEY], #these are ost likely unnecessary
             # userinfo_pretty=json.dumps(session[JWT_PAYLOAD], indent=4)
@@ -146,21 +146,24 @@ def logout():
     return redirect(auth0.api_base_url + '/v2/logout?' + urlencode(params))
 
 
-def getAllShelters():
+def getShelters(query=None):
     allShelters = []
-    for shelter in db.shelters.find():
+    if query is None:
+        shelters = db.shelters.find()
+    else:
+        shelters = db.shelters.find(query)
+        print(query)
+
+    for shelter in shelters:
+        print(shelter)
         allShelters.append(shelter)
 
     print(allShelters)
     return allShelters
 
-def getSheltersOwnedByCurrentUser():
-    return
 
 def addShelter(shelter):
     db.shelters.insert(shelter)
-    
-
 
 def deleteShelter(shelter):
     return
