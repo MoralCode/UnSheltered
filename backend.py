@@ -173,35 +173,6 @@ def getSheltersOwnedByCurrentUser():
             userShelters.append(shelter)
     return userShelters
 
-
-def getAllShelters():
-    shelters = []
-    # Then query for documents
-    shelter_docs = shelters_ref.get()
-    for shelter in shelter_docs:
-        shelterEntry = shelter.to_dict()
-        shelters.append(
-            Shelter(
-                shelterEntry['name'],
-                shelter.id,
-                shelterEntry['ownedby'],
-                shelterEntry['capacity'],
-                shelterEntry['bedsoccupied']
-                )
-            )
-        # shelters.append(shelterEntry)
-    return shelters
-
-def getSheltersOwnedByCurrentUser():
-    allShelters = getAllShelters()
-    userShelters = []
-
-    for shelter in allShelters:
-        if (shelter.owner == getCurrentUserId()):
-            userShelters.append(shelter)
-    return userShelters
-
-
 def addShelter(shelter):
     newShelter = Shelter(
         shelter.name,
