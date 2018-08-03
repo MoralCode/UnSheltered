@@ -4,23 +4,25 @@ from flask import request
 from flask import render_template
 from flask import session
 from flask import url_for
-from google.cloud import firestore
 import os
+# from google.cloud import firestore
+from pymongo import MongoClient
 from authlib.flask.client import OAuth
-from classes.Shelter import Shelter
-
+# from classes.Shelter import Shelter
 #CONSTANTS
 JWT_PAYLOAD = 'jwt_payload'
 PROFILE_KEY = 'profile'
 
 
+client = MongoClient(os.environ.get('DATABASE_URL'))
+db = client.unsheltereddb
+
 app = Flask(__name__)
 oauth = OAuth(app)
-db = firestore.Client()
-shelters_ref = db.collection(u'shelters')
+# db = firestore.Client()
+# shelters_ref = db.collection(u'shelters')
 
-if environ['GOOGLE_APPLICATION_CREDENTIALS'] is None:
-    environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'config/firebasesecrets.json'
+
 
 app.config['SECRET_KEY'] = os.environ['FLASK_SECRET_KEY']
 base_url='https://' + 'unsheltered.auth0.com'
@@ -119,15 +121,13 @@ def account():
     elif request.method == 'POST':
         form = request.form
 
-        bedsOccupied = int(form.getlist('shelter-capacity')[0]) - int(form.getlist('available-beds')[0])
-
-        shelter = Shelter(
-            form.getlist('shelter-name')[0],
-            form.getlist('shelter-id')[0],
-            str(getCurrentUserId()),
-            int(form.getlist('shelter-capacity')[0]),
-            bedsOccupied
-        )
+        shelter = {
+            'name': form.getlist('shelter-name')[0],
+            'id': form.getlist('shelter-id')[0],
+            'owner': getCurrentUserId(),
+            'capacity': int(form.getlist('shelter-capacity')[0]),
+            'spotsFree': int(form.getlist('available-beds')[0])
+        }
         try:
             shouldDelete = form.getlist('deletion-checkbox')[0] == 'true'
         except IndexError:
@@ -147,58 +147,23 @@ def logout():
 
 
 def getAllShelters():
-    shelters = []
-    # Then query for documents
-    shelter_docs = shelters_ref.get()
-    for shelter in shelter_docs:
-        shelterEntry = shelter.to_dict()
-        shelters.append(
-            Shelter(
-                shelterEntry['name'],
-                shelter.id,
-                shelterEntry['ownedby'],
-                shelterEntry['capacity'],
-                shelterEntry['bedsoccupied']
-                )
-            )
-        # shelters.append(shelterEntry)
-    return shelters
+    allShelters = []
+    for shelter in db.shelters.find():
+        allShelters.append(shelter)
+
+    print(allShelters)
+    return allShelters
 
 def getSheltersOwnedByCurrentUser():
-    allShelters = getAllShelters()
-    userShelters = []
-
-    for shelter in allShelters:
-        if (shelter.owner == getCurrentUserId()):
-            userShelters.append(shelter)
-    return userShelters
+    return
 
 def addShelter(shelter):
-    newShelter = Shelter(
-        shelter.name,
-        None,
-        getCurrentUserId(),
-        shelter.capacity,
-        shelter.bedsOccupied
-    )
-    shelters_ref.add(newShelter.to_dict())
-    return
+    db.shelters.insert(shelter)
+    
 
 
 def deleteShelter(shelter):
-    shelters_ref.document(shelter.id).delete()
-    #Warning: Deleting a document does not delete its subcollections!
-    #When you delete a document that has associated subcollections, the subcollections are not deleted. They are still accessible by reference. For example, there may be a document referenced by db.collection('coll').doc('doc').collection('subcoll').doc('subdoc') even though the document referenced by db.collection('coll').doc('doc') no longer exists. If you want to delete documents in subcollections when deleting a document, you must do so manually, as shown in Delete Collections below.
     return
 
 def updateShelter(shelter):
-    # Add a new doc in collection 'cities' with ID 'LA'
-    # shelters_ref.document(u'LA').set(data)
-
-    # The option to merge data is not yet available for Python. Instead, call the
-    # update method and pass the option to create the document if it's missing.
-    shelters_ref.document(shelter.id).update(
-        shelter.to_dict(),
-        firestore.CreateIfMissingOption(True)
-        )
     return

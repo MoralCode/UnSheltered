@@ -12,6 +12,7 @@ python-dotenv = "*"
 requests = "*"
 authlib = "*"
 six = "*"
+pymongo = "*"
 
 [dev-packages]
 
