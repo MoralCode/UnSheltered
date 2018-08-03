@@ -4,12 +4,14 @@
                 <summary class="shelterSummary">
                     <span class="shelterTitle">
                         {{ shelter.name }}
-
+                        
+                        <!---
                         <i title ="Has Restrictions" class="fas fa-exclamation-triangle warningColor shelterWarningIcon"></i>
+                        -->
                     </span>
                     <span class="shelterOccupancy">{{ shelter.capacity - shelter.bedsOccupied }}</span>
                 </summary>
-                
+            
                 <div class="infoContainer">
     
                     <div class="infobox" id="selected"> <!--the id thing is for the background color of the individual box, new background colors for a different box requires a new selected id (new css class)-->
