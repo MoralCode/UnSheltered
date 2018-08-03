@@ -4,8 +4,8 @@ from flask import request
 from flask import render_template
 from flask import session
 from flask import url_for
-from os import environ
 from google.cloud import firestore
+import os
 from authlib.flask.client import OAuth
 from classes.Shelter import Shelter
 
@@ -22,14 +22,14 @@ shelters_ref = db.collection(u'shelters')
 if environ['GOOGLE_APPLICATION_CREDENTIALS'] is None:
     environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'config/firebasesecrets.json'
 
-app.config['SECRET_KEY'] = environ['FLASK_SECRET_KEY']
+app.config['SECRET_KEY'] = os.environ['FLASK_SECRET_KEY']
 base_url='https://' + 'unsheltered.auth0.com'
 AUTH0_AUDIENCE = base_url + '/userinfo'
 
 auth0 = oauth.register(
     'auth0',
-    client_id = environ['AUTH0_CLIENT_ID'],
-    client_secret = environ['AUTH0_CLIENT_SECRET'],
+    client_id = os.environ['AUTH0_CLIENT_ID'],
+    client_secret = os.environ['AUTH0_CLIENT_SECRET'],
     api_base_url = base_url,
     access_token_url = base_url + '/oauth/token',
     authorize_url = base_url + '/authorize',
@@ -141,7 +141,7 @@ def logout():
     session.clear()
     params = {
         'returnTo': url_for('home', _external=True),
-        'client_id': environ['AUTH0_CLIENT_ID']
+        'client_id': os.environ['AUTH0_CLIENT_ID']
         }
     return redirect(auth0.api_base_url + '/v2/logout?' + urlencode(params))
 
