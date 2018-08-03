@@ -1,20 +1,12 @@
 from flask import Flask
-from flask import jsonify
-from flask import redirect
+# from flask import redirect
 from flask import request
 from flask import render_template
 from flask import session
 from flask import url_for
-import firebase_admin
-from functools import wraps
 from os import environ
-from werkzeug.exceptions import HTTPException
-from firebase_admin import credentials
 from google.cloud import firestore
-import json
 from authlib.flask.client import OAuth
-from six.moves.urllib.parse import urlencode
-from dotenv import load_dotenv, find_dotenv
 from classes.Shelter import Shelter
 
 #CONSTANTS
