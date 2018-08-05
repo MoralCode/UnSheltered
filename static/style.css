@@ -61,6 +61,7 @@
          }
     
          .shelterWarningIcon{
+             flex: 1; /* This can probably be replaced with bootstrap later */
             font-size: 22px
          }
          

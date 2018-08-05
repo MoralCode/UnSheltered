@@ -1,0 +1,57 @@
+<div id="sheltercontainer">
+        {% for shelter in shelters %}
+            <details class="shelterListEntry">
+                <summary class="shelterSummary">
+                    {% if shelter.restrictions is defined %}
+                        <i title ="Has Restrictions" class="fas fa-exclamation-triangle warningColor shelterWarningIcon"></i>
+                    {% endif %}
+                    <span class="shelterTitle">
+                        {{ shelter.name }}
+                    </span>
+                    <span class="shelterOccupancy">{{ shelter.bedsFree }}</span>
+                </summary>
+            
+                <div class="infoContainer">
+                    {% block name scoped %}{% endblock %}
+                    {% if shelter.imageURL is defined %}
+                    <div class="infobox">{% block photo scoped %}{% endblock %}</div>
+                    {% endif %}
+                    <div class="infobox">
+                        <h4 class="aligntoptitle">Address:</h4>
+                        {% block address scoped %}{% endblock %}
+                    </div>
+                    {% if shelter.donationURL is defined %}
+                    <div class="infobox">
+                        {% block donationlink scoped %}{% endblock %}
+                    </div>
+                    {% endif %}
+                    <div class="infobox">
+                        <h4 class="aligntoptitle">Contact Information:</h4>
+                        {% block contactinfo scoped %}{% endblock %}
+                    </div>
+                    <div class="infobox">
+                        <h4 class="aligntoptitle">Occupancy:</h4>
+                        {% block capacity scoped %}{% endblock %}
+                    </div>
+                    {% if shelter.amenities is defined %}
+                    <div class="infobox">
+                        <h4 class="aligntoptitle">Amenities:</h4>
+                        {% block amenities scoped %}{% endblock %}
+                    </div>
+                    {% endif %}
+                    {% if shelter.restrictions is defined %}
+                    <div class="infobox">
+                        <h4 class="aligntoptitle">Restrictions:</h4>
+                        {% block restrictions scoped %}{% endblock %}
+                    </div>
+                    {% endif %}
+                    <div class="infobox">
+                        <!-- this is generated based on address-->
+                    </div>
+                    <!-- <div class="infobox">{% block name %}{% endblock %}</div> -->
+                </div>
+                {% block editform scoped %}{% endblock %}
+            </details>
+        {% endfor %} 
+        {% block newform %}{% endblock %} 
+    </div>
