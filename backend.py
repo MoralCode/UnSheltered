@@ -8,6 +8,7 @@ import os
 # from google.cloud import firestore
 from pymongo import MongoClient
 from authlib.flask.client import OAuth
+from six.moves.urllib.parse import urlencode 
 # from classes.Shelter import Shelter
 #CONSTANTS
 JWT_PAYLOAD = 'jwt_payload'
