@@ -7,6 +7,7 @@ from flask import url_for
 import os
 # from google.cloud import firestore
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 from authlib.flask.client import OAuth
 from six.moves.urllib.parse import urlencode 
 # from classes.Shelter import Shelter
@@ -52,10 +53,10 @@ def getCurrentUserId():
 
 
 def processShelterEdit(shelter, delete=False):
-    if shelter['id'] == '':
+    if shelter['_id'] == '':
         addShelter(shelter)
     elif delete:
-        deleteShelter(shelter)
+        deleteShelter(shelter['_id'])
     else:
         updateShelter(shelter)
 
@@ -121,13 +122,12 @@ def account():
                 )
     elif request.method == 'POST':
         form = request.form
-
-        shelter = {
-            'name': form.getlist('shelter-name')[0],
-            'id': form.getlist('shelter-id')[0],#for checking if its a new shelter or editing one
-            'owner': str(getCurrentUserId()),
-            'capacity': int(form.getlist('shelter-capacity')[0]),
-            'bedsFree': int(form.getlist('available-beds')[0])
+        formData = {
+            'name': form.getlist('name')[0],
+            '_id': ObjectId(str(form.getlist('shelter-id')[0])),#for checking if its a new shelter or editing one
+            'owner': str(getCurrentUserId()),#potential security issue?
+            'capacity': int(form.getlist('capacity')[0]),
+            'bedsFree': int(form.getlist('capacity')[0]) - int(form.getlist('bedsTaken')[0])
         }
         try:
             shouldDelete = form.getlist('deletion-checkbox')[0] == 'true'
