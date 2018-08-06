@@ -169,5 +169,15 @@ def addShelter(shelter):
 def deleteShelter(shelter):
     return
 
-def updateShelter(shelter):
-    return
+def updateShelter(shelterData):
+    shelterQuery={ '_id': shelterData['_id']}
+    shelter=getShelters({ '_id': shelterData['_id']})[0]
+    updateQuery={}
+
+    for key, value in shelterData.items():
+        if shelter[key] != value: 
+            updateQuery[key] = value
+
+    updateQuery = { "$set": updateQuery }
+
+    db.shelters.update_one(shelterQuery, updateQuery)
