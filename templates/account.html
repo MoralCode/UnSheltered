@@ -9,10 +9,15 @@
 {% endblock %}
 
 {% block content %}
-    <h1> Manage Your Shelters </h1> 
+    <h1 id="manageTitle"> Manage Your Shelters </h1> 
     
     {% include 'adminlist.html' %}    
   
-    
+ 
+  <details class="shelterListEntry">
+      <summary class="shelterTitle">Edit Capacity</summary>
+          
+   </details>         
+ 
 
 {% endblock %}
