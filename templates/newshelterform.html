@@ -1,31 +1,20 @@
 
     <form action="{{ url_for('account') }}" name="newshelterform" method="post">
         <!-- <input type="text" name="shelter-id" value="{{ shelter._id if shelter is defined else '' }}" hidden> -->
-        <label for="shelter-name">Name:</label>
-        <input type="text" name="shelter-name" required  value="{{ shelter.name if shelter is defined else '' }}">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required  value="{{ shelter.name if shelter is defined else '' }}">
         <br>
-        <label for="shelter-location">Location:</label>
-        <input type="text" name="shelter-location"><!-- STUCK HERE. how best to handle address in HTML forms?-->
+        <label for="address">Location:</label>
+        <input type="text" name="address"><!-- STUCK HERE. how best to handle address in HTML forms?-->
         <br>
-        <label for="shelter-phone">Phone Number:</label>
-        <input type="text" name="shelter-phone">
-        <br>
-        <label for="shelter-capacity">Housing Capacity</label>
-        <input type="number" name="shelter-capacity" required value="{{ shelter.capacity if shelter is defined else '' }}">
+        <label for="capacity">Housing Capacity</label>
+        <input type="number" name="capacity" required value="{{ shelter.capacity if shelter is defined else '' }}">
         <label for="shelter-capacity">beds</label>
         <br>
         <label for="available-beds">Spaces Free:</label> <!-- should we do beds occupied here?-->
         <input type="number" required name="available-beds">
         <br>
-        <label for="donation-link">Link to accept donations:</label>
-        <input type="text" name="donation-link">
-        <br>
-        <label for="deletion-checkbox">Delete this shelter? </label>
-        <input type="checkbox" name="deletion-checkbox" value="true">
-        <br>
-        {% if shelter is defined %}
-        <input type="submit" value="Update Shelter Listing">
-        {% elif shelter is not defined %}
-        <input type="submit" value="Add Shelter Listing">
-        {% endif %}
+    
+        <input type="submit" name="submit" value="Submit">
+        <input type="reset" name="Reset form" value="Reset this form">
      </form>
