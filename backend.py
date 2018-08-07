@@ -155,13 +155,10 @@ def getShelters(query=None):
         shelters = db.shelters.find()
     else:
         shelters = db.shelters.find(query)
-        print(query)
 
     for shelter in shelters:
-        print(shelter)
         allShelters.append(shelter)
 
-    print(allShelters)
     return allShelters
 
 
