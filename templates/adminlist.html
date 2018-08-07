@@ -32,10 +32,10 @@ note: this only accepts URL's at this time. file uploads are not supported.
 
 {% block capacity %}
 <label for="bedsTaken">Beds Taken:</label><!-- this should probably be beds free to avoid this \/ -->
-<input type="text" name="bedsTaken" form="shelter{{ shelter._id }}" value="{{ (shelter.capacity - shelter.bedsFree) or '' }}">
+<input type="number" name="bedsTaken" form="shelter{{ shelter._id }}" value="{{ (shelter.capacity - shelter.bedsFree) or '' }}">
 <br>
 <label for="capacity">Total Capacity:</label>
-<input type="text" name="capacity" form="shelter{{ shelter._id }}" value="{{ shelter.capacity or '' }}">
+<input type="number" name="capacity" form="shelter{{ shelter._id }}" value="{{ shelter.capacity or '' }}">
 {% endblock %}
 
 {% block amenities %}
