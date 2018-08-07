@@ -14,12 +14,12 @@ note: this only accepts URL's at this time. file uploads are not supported.
 {% endblock %}
 
 {% block address %}
-<input type="text" name="streetaddress" placeholder="Street Address"><br>
-<input type="text" name="city" value="Portland" disabled size="4">
-<input type="text" name="state" value="OR" disabled size="2">
-<select>
+<input type="text" name="streetaddress" placeholder="Street Address" form="shelter{{ shelter._id }}" value="{{ shelter.streetaddress or '' }}"><br>
+<input type="text" name="city" value="Portland" disabled size="4" form="shelter{{ shelter._id }}">
+<input type="text" name="state" value="OR" disabled size="2" form="shelter{{ shelter._id }}">
+<select name="zipcode" form="shelter{{ shelter._id }}">
   {% for zip in range(97201, 97300) %} {# inclusive, exclusive #}
-    <option>{{ zip }}</option>
+    <option {% if shelter.zipcode == zip  %}selected{% endif %} value="{{ zip }}">{{ zip }}</option>
   {% endfor %}
 </select>
 {% endblock %}
@@ -38,8 +38,8 @@ note: this only accepts URL's at this time. file uploads are not supported.
 {% endblock %}
 
 {% block capacity %}
-<label for="bedsTaken">Beds Taken:</label><!-- this should probably be beds free to avoid this \/ -->
-<input type="number" name="bedsTaken" form="shelter{{ shelter._id }}" value="{{ (shelter.capacity - shelter.bedsFree) or '' }}">
+<label for="bedsFree">Beds Available:</label>
+<input type="number" name="bedsFree" form="shelter{{ shelter._id }}" value="{{ shelter.bedsFree or '' }}">
 <br>
 <label for="capacity">Total Capacity:</label>
 <input type="number" name="capacity" form="shelter{{ shelter._id }}" value="{{ shelter.capacity or '' }}">

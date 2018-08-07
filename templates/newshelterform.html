@@ -1,25 +1,25 @@
 
     <form action="{{ url_for('account') }}" name="newshelterform" method="post">
-        <!-- <input type="text" name="shelter-id" value="{{ shelter._id if shelter is defined else '' }}" hidden> -->
+        <input type="text" name="shelter-id" value="{{ shelter._id if shelter is defined else '' }}" hidden>
         <label for="name">Name:</label>
         <input type="text" name="name" required  value="{{ shelter.name if shelter is defined else '' }}">
         <br><br>
         <label>Address:</label><br>
-        <input type="text" name="streetaddress" placeholder="Street Address"><br>
+        <input type="text" name="streetaddress" placeholder="Street Address" required><br>
         <input type="text" name="city" value="Portland" disabled size="4">
         <input type="text" name="state" value="OR" disabled size="2">
-        <select>
+        <select name="zipcode">
             {% for zip in range(97201, 97300) %} {# inclusive, exclusive #}
-            <option>{{ zip }}</option>
+            <option value="{{ zip }}">{{ zip }}</option>
             {% endfor %}
         </select>
 
         <br><br>
-        <label for="available-beds">Spaces Free:</label> <!-- should we do beds occupied here?-->
-        <input type="number" required name="available-beds" size="2">
+        <label for="bedsFree">Spaces Free:</label>
+        <input type="number" required name="bedsFree" size="2">
         <br>
         <label for="capacity">Housing Capacity:</label>
-        <input type="number" name="capacity" required size="2" value="{{ shelter.capacity if shelter is defined else '' }}">
+        <input type="number" name="capacity" required size="2">
         
         <br><br>
         <input type="submit" name="submit" value="Submit">

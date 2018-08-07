@@ -56,7 +56,7 @@ def getCurrentUserId():
 
 
 def processShelterEdit(shelter, delete=False):
-    if shelter['_id'] == '':
+    if not hasattr(shelter, '_id'):
         addShelter(shelter)
     elif delete:
         deleteShelter(shelter['_id'])
@@ -127,11 +127,17 @@ def account():
         form = request.form
         formData = {
             'name': form.getlist('name')[0],
-            '_id': ObjectId(str(form.getlist('shelter-id')[0])),#for checking if its a new shelter or editing one
             'owner': str(getCurrentUserId()),#potential security issue?
             'capacity': int(form.getlist('capacity')[0]),
-            'bedsFree': int(form.getlist('capacity')[0]) - int(form.getlist('bedsTaken')[0])
+            'bedsFree': int(form.getlist('bedsFree')[0]),
+            'streetAddress': form.getlist('streetaddress')[0],
+            'city': 'Portland',
+            'state': 'Oregon',
+            'zipcode': form.getlist('zipcode')[0]
         }
+        if (str(form.getlist('shelter-id')[0]) != ''):
+            formData['_id'] = ObjectId(str(form.getlist('shelter-id')[0]))
+
         if hasattr(form, 'delete'):
             processShelterEdit(formData, True)
         elif hasattr(form, 'update'):
