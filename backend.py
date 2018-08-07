@@ -175,14 +175,19 @@ def deleteShelter(shelter):
 def updateShelter(shelterData):
     shelterQuery={ '_id': shelterData['_id']}
     shelter=getShelters({ '_id': shelterData['_id']})[0]
-    updateQuery={}
+    updateQuery=None
 
     for key, value in shelterData.items():
         if shelter[key] != value: 
             updateQuery[key] = value
 
-    updateQuery = { "$set": updateQuery }
 
+    if updateQuery is None:
+        # flash
+        return
+
+    updateQuery = { "$set": updateQuery }
+  
     db.shelters.update_one(shelterQuery, updateQuery)
 
 def getLatLongFromAddress(address):
