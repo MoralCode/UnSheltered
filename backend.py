@@ -132,12 +132,11 @@ def account():
             'capacity': int(form.getlist('capacity')[0]),
             'bedsFree': int(form.getlist('capacity')[0]) - int(form.getlist('bedsTaken')[0])
         }
-        try:
-            shouldDelete = form.getlist('deletion-checkbox')[0] == 'true'
-        except IndexError:
-            shouldDelete = False
+        if hasattr(form, 'delete'):
+            processShelterEdit(formData, True)
+        elif hasattr(form, 'update'):
+            processShelterEdit(formData, False)
 
-        processShelterEdit(shelter, shouldDelete)
         return redirect('/account')
 
 @app.route('/logout')
