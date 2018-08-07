@@ -168,8 +168,8 @@ def getShelters(query=None):
 def addShelter(shelter):
     db.shelters.insert(shelter)
 
-def deleteShelter(shelter):
-    return
+def deleteShelter(id):
+    db.shelters.delete_one({ "_id": id })
 
 def updateShelter(shelterData):
     shelterQuery={ '_id': shelterData['_id']}
