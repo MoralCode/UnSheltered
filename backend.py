@@ -5,11 +5,14 @@ from flask import render_template
 from flask import session
 from flask import url_for
 import os
+import json
 # from google.cloud import firestore
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from authlib.flask.client import OAuth
 from six.moves.urllib.parse import urlencode 
+import googlemaps
+from datetime import datetime
 # from classes.Shelter import Shelter
 #CONSTANTS
 JWT_PAYLOAD = 'jwt_payload'
@@ -181,3 +184,9 @@ def updateShelter(shelterData):
     updateQuery = { "$set": updateQuery }
 
     db.shelters.update_one(shelterQuery, updateQuery)
+
+def getLatLongFromAddress(address):
+    gmaps = googlemaps.Client(key=os.environ.get('MAPS_APIKEY'))
+    geocode_result = gmaps.geocode(address)#111 W Burnside St, Portland, OR
+    # print(json.dumps(geocode_result, indent=4, sort_keys=True))
+    return ((geocode_result[0]["geometry"]["location"]["lat"]), (geocode_result[0]["geometry"]["location"]["lng"])) 

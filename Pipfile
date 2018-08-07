@@ -13,6 +13,7 @@ requests = "*"
 authlib = "*"
 six = "*"
 pymongo = "*"
+googlemaps = "*"
 
 [dev-packages]
 
