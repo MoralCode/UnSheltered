@@ -14,7 +14,14 @@ note: this only accepts URL's at this time. file uploads are not supported.
 {% endblock %}
 
 {% block address %}
-<input type="text" name="address" form="shelter{{ shelter._id }}" value="{{ shelter.address or '' }}">
+<input type="text" name="streetaddress" placeholder="Street Address"><br>
+<input type="text" name="city" value="Portland" disabled size="4">
+<input type="text" name="state" value="OR" disabled size="2">
+<select>
+  {% for zip in range(97201, 97300) %} {# inclusive, exclusive #}
+    <option>{{ zip }}</option>
+  {% endfor %}
+</select>
 {% endblock %}
 
 {% block donationlink %}
