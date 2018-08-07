@@ -13,7 +13,7 @@ from authlib.flask.client import OAuth
 from six.moves.urllib.parse import urlencode 
 import googlemaps
 from datetime import datetime
-# from classes.Shelter import Shelter
+
 #CONSTANTS
 JWT_PAYLOAD = 'jwt_payload'
 PROFILE_KEY = 'profile'
