@@ -45,30 +45,22 @@
             <img src="https://vectr.com/ajharker/a1kj2IcWwB.svg?select=a1kj2IcWwBpage0">
           </a>
         </div>
-        {% if not loggedin %}
-        <div class="d-none d-lg-block col-lg-2 order-5">
+        <div class="d-none d-lg-block col-lg-2 order-2">
           <a href="/account" class="btn btn-headerprimary">
             <h5>Account</h5>
           </a>
         </div>
-        {% else %}
-        <div class="d-none d-lg-block col-lg-2 order-5">
-          <a href="/logout" class="btn btn-headerprimary">
-            <h5>Log Out</h5>
-          </a>
-        </div>
-        {% endif %}
         <div class="d-none d-lg-block col-lg-3 order-1">
           <a href="/volunteer" class="btn btn-headerprimary">
             <h5>Volunteer Opportunities</h5>
           </a>
         </div>
-        <div class="d-none d-lg-block col-lg-2 order-2">
+        <div class="d-none d-lg-block col-lg-2 order-4">
           <a href="/about" class="btn btn-headerprimary">
             <h5>About Us</h5>
           </a>
         </div>
-        <div class="d-none d-lg-block col-lg-3 order-4">
+        <div class="d-none d-lg-block col-lg-3 order-5">
           <a href="/homelessRights" class="btn btn-headerprimary">
             <h5>Homeless Rights</h5>
           </a>
@@ -78,7 +70,7 @@
 
 
   </header>
-  <section id="content">
+  <section class="container-fluid" id="content">
     {% block content %} {% endblock %}
   </section>
   <footer id="site-footer">
