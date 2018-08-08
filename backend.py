@@ -87,7 +87,7 @@ def callbackHandling():
         'name': userinfo['name'],
         'picture': userinfo['picture']
     }
-    flash('You were successfully logged in')
+    flash('You were successfully logged in', 'alert-success')
     return redirect('/account')
 
 @app.route('/volunteer')
@@ -160,7 +160,7 @@ def logout():
         'returnTo': url_for('home', _external=True),
         'client_id': os.environ['AUTH0_CLIENT_ID']
         }
-    flash('You were successfully logged out')
+    flash('You were successfully logged out', 'alert-success')
     return redirect(auth0.api_base_url + '/v2/logout?' + urlencode(params))
 
 
@@ -215,4 +215,4 @@ def getURL(address):
     url_string = "https://www.google.com/maps/search/?api=1&query="+lat+","+lng+"&query_place_id="+placeid
     return (url_string)
     #((geocode_result[0]["geometry"]["location"]["lat"]), (geocode_result[0]["geometry"]["location"]["lng"])) 
-    getURL("111 W Burnside St, Portland, OR")
+    
