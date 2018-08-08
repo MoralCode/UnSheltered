@@ -29,12 +29,12 @@ note: this only accepts URL's at this time. file uploads are not supported.
 <input type="url" name="donationURL" form="shelter{{ shelter._id }}" value="{{ shelter.donationURL or '' }}">
 {% endblock %}
 
-{% block contactinfo %}
+{% block contactinfo %}{#
 <label for="phoneNumber">Phone Number:</label>
 <input type="tel" name="phoneNumber" form="shelter{{ shelter._id }}" value="{{ shelter.phoneNumber or '' }}">
 <br>
 <label for="emailAddress">Email Address:</label>
-<input type="text" name="emailAddress" form="shelter{{ shelter._id }}" value="{{ shelter.emailAddress or '' }}">
+<input type="text" name="emailAddress" form="shelter{{ shelter._id }}" value="{{ shelter.emailAddress or '' }}">#}
 {% endblock %}
 
 {% block capacity %}
