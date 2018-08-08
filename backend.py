@@ -146,11 +146,7 @@ def account():
                 print("creating")
                 addShelter(formData)
                 break
-
-
-            
                 
-            
         return redirect('/account')
 
 @app.route('/logout')
@@ -180,11 +176,11 @@ def getShelters(query=None):
 
 def addShelter(shelter):
     db.shelters.insert(shelter)
-    flash('Shelter Added!')
+    flash('Shelter Added!', 'alert-success')
 
 def deleteShelter(id):
     db.shelters.delete_one({ "_id": id })
-    flash('Shelter Deleted!')
+    flash('Shelter Deleted!', 'alert-success')
 
 def updateShelter(shelterData):
     shelterQuery={ '_id': shelterData['_id']}
@@ -203,7 +199,7 @@ def updateShelter(shelterData):
     updateQuery = { "$set": updateQuery }
   
     db.shelters.update_one(shelterQuery, updateQuery)
-    flash('Shelter Updated!')
+    flash('Shelter Updated!', 'alert-success')
 
 def getURL(address):
     gmaps = googlemaps.Client(key=os.environ.get('MAPS_APIKEY'))
