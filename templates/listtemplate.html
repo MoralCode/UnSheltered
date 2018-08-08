@@ -16,18 +16,18 @@
 
                     <div class="container-fluid">
                         <div class="row">
-                            {% block name scoped %}{% endblock %} {% if shelter.imageURL is defined %}
+                            {#{% block name scoped %}{% endblock %} {% if shelter.imageURL is defined %}
                             <div class="col">
                                 <div class="infobox">{% block photo scoped %}{% endblock %}</div>
                             </div>
-                            {% endif %}
+                            {% endif %}#}
                             <div class="col">
                                 <div class="infobox">
                                     <h5>Address:</h5>
                                     {% block address scoped %}{% endblock %}
                                 </div>
                             </div>
-                            {% if shelter.donationURL is defined %}
+                            {#{% if shelter.donationURL is defined %}
                             <div class="col">
                                 <div class="infobox">
                                     {% block donationlink scoped %}{% endblock %}
@@ -39,7 +39,7 @@
                                     <h5>Contact Information:</h5>
                                     {% block contactinfo scoped %}{% endblock %}
                                 </div>
-                            </div>
+                            </div>#}
                             <div class="col">
                                 <div class="infobox">
                                     <h5>Occupancy:</h5>

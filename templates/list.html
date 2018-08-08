@@ -1,15 +1,25 @@
-{% extends "listtemplate.html" %} {% block photo %}
-<img src="{{ shelter.imageURL }}" />{% endblock %} {% block address %}
+{% extends "listtemplate.html" %}
+
+{#{% block photo %}
+<img src="{{ shelter.imageURL }}" />{% endblock %}#}
+
+{% block address %}
 <p>{{ shelter.address }}</p>
-{% endblock %} {% block donationlink %}
+{% endblock %}
+
+{% block donationlink %}
 <a href="{{ shelter.donationURL }}">
     <h5>Donate to this Shelter</h5>
 </a>
-{% endblock %} {% block contactinfo %}
+{% endblock %}
+
+{% block contactinfo %}
 <!-- It might be better to make these inline styles instead of block styles-->
-<p>Phone Number: {{ shelter.phoneNumber }}</p>
-<p>Email: {{ shelter.emailAddress }}</p>
-{% endblock %} {% block capacity %}
+<!-- <p>Phone Number: {{ shelter.phoneNumber }}</p>
+<p>Email: {{ shelter.emailAddress }}</p> -->
+{% endblock %}
+
+{% block capacity %}
 <p>{{ shelter.capacity-shelter.bedsFree }} / {{ shelter.capacity }} Spaces filled</p>
 {% endblock %}
 
