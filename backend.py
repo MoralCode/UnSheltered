@@ -4,6 +4,7 @@ from flask import request
 from flask import render_template
 from flask import session
 from flask import url_for
+from flask import flash
 import os
 import json
 # from google.cloud import firestore
@@ -94,6 +95,7 @@ def callbackHandling():
         'name': userinfo['name'],
         'picture': userinfo['picture']
     }
+    flash('You were successfully logged in')
     return redirect('/account')
 
 @app.route('/volunteer')
@@ -152,6 +154,7 @@ def logout():
         'returnTo': url_for('home', _external=True),
         'client_id': os.environ['AUTH0_CLIENT_ID']
         }
+    flash('You were successfully logged out')
     return redirect(auth0.api_base_url + '/v2/logout?' + urlencode(params))
 
 
@@ -171,9 +174,11 @@ def getShelters(query=None):
 
 def addShelter(shelter):
     db.shelters.insert(shelter)
+    flash('Shelter Added!')
 
 def deleteShelter(id):
     db.shelters.delete_one({ "_id": id })
+    flash('Shelter Deleted!')
 
 def updateShelter(shelterData):
     shelterQuery={ '_id': shelterData['_id']}
@@ -192,6 +197,7 @@ def updateShelter(shelterData):
     updateQuery = { "$set": updateQuery }
   
     db.shelters.update_one(shelterQuery, updateQuery)
+    flash('Shelter Updated!')
 
 def getURL(address):
     gmaps = googlemaps.Client(key=os.environ.get('MAPS_APIKEY'))
