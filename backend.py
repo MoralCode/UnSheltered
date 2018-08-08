@@ -130,6 +130,10 @@ def account():
             'zipcode': form.getlist('zipcode')[0]
         }
 
+        if formData['bedsFree'] > formData['capacity']:
+            flash('Error: The number of beds available cannot be higher than the shelter capacity.', 'alert-danger')
+            return redirect('/account')
+
         for field in form:
             if field == 'delete':
                 print("deleting")
