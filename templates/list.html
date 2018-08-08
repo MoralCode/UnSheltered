@@ -4,7 +4,9 @@
 <img src="{{ shelter.imageURL }}" />{% endblock %}#}
 
 {% block address %}
-<p>{{ shelter.address }}</p>
+<p>{{ shelter.streetAddress }},<br>
+{{ shelter.city }}, {{ shelter.state }} {{ shelter.zipcode }}</p>
+<a href="{{ shelter.mapURL }}">View shelter on Google Maps</a>
 {% endblock %}
 
 {% block donationlink %}
@@ -42,8 +44,7 @@
 {% endblock %}
 
 -->
-{% block maplink %}
-<a href="{{ shelter.mapURL }}">View this shelter on Google Maps</a>{% endblock %}
+
 
 
 <!--Please DO NOT DELETE THIS. If we are going to add checkboxes/lists this is very helpful! It is the Boostrap for that.
