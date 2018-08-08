@@ -1,3 +1,5 @@
+**Note:** The forms on this site are known to be vulnerable to CSRF (Cross-Site Request Forgery). 
+![Homepage of UnSheltered](homepagescreenshot.png)
 # UnSheltered
  An online listing and occupancy tracking system for homeless shelters. The homelessness crisis in Portland continues to increase with 57% being unsheltered. The goal of our website is to allow the local homeless to find shelters with enough spaces and that has needed amenities. In addition, our app educates homeless youth on their educational rights as well as advertising volunteer opportunities for local community members or homeless that want to give back to shelters.
 
