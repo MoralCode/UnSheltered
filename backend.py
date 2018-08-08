@@ -56,14 +56,6 @@ def getCurrentUserId():
     return session[PROFILE_KEY]['user_id']
 
 
-def processShelterEdit(shelter, delete=False):
-    if not hasattr(shelter, '_id'):
-        addShelter(shelter)
-    elif delete:
-        deleteShelter(shelter['_id'])
-    else:
-        updateShelter(shelter)
-
 @app.context_processor
 def injectLoginState():
     return dict(loggedin=isLoggedIn())
@@ -137,14 +129,28 @@ def account():
             'state': 'Oregon',
             'zipcode': form.getlist('zipcode')[0]
         }
-        if (str(form.getlist('shelter-id')[0]) != ''):
-            formData['_id'] = ObjectId(str(form.getlist('shelter-id')[0]))
 
-        if hasattr(form, 'delete'):
-            processShelterEdit(formData, True)
-        elif hasattr(form, 'update'):
-            processShelterEdit(formData, False)
+        for field in form:
+            if field == 'delete':
+                print("deleting")
+                deleteShelter(ObjectId(str(form.getlist('shelter-id')[0])))
+                break
 
+            elif field == 'update':
+                print("updating")
+                formData['_id'] = ObjectId(str(form.getlist('shelter-id')[0]))
+                updateShelter(formData)
+                break
+                
+            elif field == 'submit':
+                print("creating")
+                addShelter(formData)
+                break
+
+
+            
+                
+            
         return redirect('/account')
 
 @app.route('/logout')
