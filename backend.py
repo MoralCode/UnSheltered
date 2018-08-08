@@ -163,6 +163,7 @@ def getShelters(query=None):
         shelters = db.shelters.find(query)
 
     for shelter in shelters:
+        shelter["mapURL"] = getURL(shelter["streetAddress"]+", "+shelter["city"]+", "+shelter["state"]+" "+shelter["zipcode"])
         allShelters.append(shelter)
 
     return allShelters
@@ -192,8 +193,14 @@ def updateShelter(shelterData):
   
     db.shelters.update_one(shelterQuery, updateQuery)
 
-def getLatLongFromAddress(address):
+def getURL(address):
     gmaps = googlemaps.Client(key=os.environ.get('MAPS_APIKEY'))
     geocode_result = gmaps.geocode(address)#111 W Burnside St, Portland, OR
-    # print(json.dumps(geocode_result, indent=4, sort_keys=True))
-    return ((geocode_result[0]["geometry"]["location"]["lat"]), (geocode_result[0]["geometry"]["location"]["lng"])) 
+    #print(json.dumps(geocode_result, indent=4, sort_keys=True))
+    lat=str(float(geocode_result[0]["geometry"]["location"]["lat"]))
+    lng=str(float(geocode_result[0]["geometry"]["location"]["lng"]))
+    placeid=(geocode_result[0]["place_id"])
+    url_string = "https://www.google.com/maps/search/?api=1&query="+lat+","+lng+"&query_place_id="+placeid
+    return (url_string)
+    #((geocode_result[0]["geometry"]["location"]["lat"]), (geocode_result[0]["geometry"]["location"]["lng"])) 
+    getURL("111 W Burnside St, Portland, OR")
