@@ -14,7 +14,7 @@ note: this only accepts URL's at this time. file uploads are not supported.
 {% endblock %}
 
 {% block address %}
-<input type="text" name="streetaddress" placeholder="Street Address" form="shelter{{ shelter._id }}" value="{{ shelter.streetaddress or '' }}"><br>
+<input type="text" name="streetaddress" placeholder="Street Address" form="shelter{{ shelter._id }}" value="{{ shelter.streetAddress or '' }}"><br>
 <input type="text" name="city" value="Portland" disabled size="4" form="shelter{{ shelter._id }}">
 <input type="text" name="state" value="OR" disabled size="2" form="shelter{{ shelter._id }}">
 <select name="zipcode" form="shelter{{ shelter._id }}">
