@@ -257,6 +257,7 @@ section#content {
   }
   #site-footer{
       text-align: center;
+      bottom: 0;
   }
 
 
@@ -355,6 +356,7 @@ section#content {
     color: #ffffff; 
     background-color: #778FCF; 
     border-color: #778FCF; 
+    padding: 0px;
   } 
    
   .btn-headerprimary:hover, 
