@@ -250,16 +250,13 @@ section#content {
 }
 
 
-  section#site-footer{
+  footer#site-footer{
       height: 25px;
       width: 100%;
       text-align: center;
+      bottom:0;
   }
-  #site-footer{
-      text-align: center;
-      bottom: 0;
-  }
-
+  
 
 
 #calendar{
