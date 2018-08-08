@@ -4,15 +4,28 @@
             <div class="col-12 col-sm-11 col-md-7" style="min-width: 70%">
                 {% for shelter in shelters %}
                 <details class="shelterListEntry">
+
                     <summary class="shelterSummary">
-                        {% if shelter.restrictions is defined %}
-                        <i title="Has Restrictions" class="fas fa-exclamation-triangle warningColor shelterWarningIcon"></i>
-                        {% endif %}
-                        <span class="shelterTitle">
-                            {{ shelter.name }}
+
+
+                        <span class="shelterTitle ">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col" style="padding-right:0px; padding-left:0px;">
+                                        {{ shelter.name }} {% if shelter.restrictions is defined %}
+                                        <i title="Has Restrictions" class="fas fa-exclamation-triangle warningColor shelterWarningIcon"></i>
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="colalign-self-center" style="padding-right:0px; padding-left:5px; text-align:end">
+                                        <span class="shelterOccupancy" style="font-size:15px; font-weight:normal; align-self:center">{{ shelter.bedsFree }}</span>
+                                    </div>
+                                </div>
+                            </div>
                         </span>
-                        <span class="shelterOccupancy">{{ shelter.bedsFree }}</span>
+
                     </summary>
+
 
                     <div class="container-fluid">
                         <div class="row">
