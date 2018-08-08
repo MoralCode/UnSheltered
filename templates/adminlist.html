@@ -13,7 +13,7 @@ courtesy: https://stackoverflow.com/a/14215034 -->
 <input type="text" name="state" value="OR" disabled size="2" form="shelter{{ shelter._id }}">
 <select name="zipcode" form="shelter{{ shelter._id }}">
   {% for zip in range(97201, 97300) %} {# inclusive, exclusive #}
-  <option {% if shelter.zipcode==z ip %}selected{% endif %} value="{{ zip }}">{{ zip }}</option>
+  <option {% if shelter.zipcode==zip %}selected{% endif %} value="{{ zip }}">{{ zip }}</option>
   {% endfor %}
 </select>
 {% endblock %} {% block donationlink %}
