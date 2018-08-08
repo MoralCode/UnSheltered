@@ -3,8 +3,10 @@
 courtesy: https://stackoverflow.com/a/14215034 -->
 
 {% block name %}
-<label for="name">Shelter Name:</label>
-<input type="text" name="name" style="max-height:40px;" form="shelter{{ shelter._id }}" value="{{ shelter.name or '' }}"> {% endblock %} {% block photo %}
+<label for="name">
+  <h5>Shelter Name:</h5>
+</label>
+<input type="text" name="name" form="shelter{{ shelter._id }}" value="{{ shelter.name or '' }}"> {% endblock %} {% block photo %}
 <label for="imageURL">Image URL:</label>
 <input type="url" name="imageURL" form="shelter{{ shelter._id }}" value="{{ shelter.imageURL or '' }}"> note: this only accepts URL's at this time. file uploads are not supported. {% endblock %} {% block address %}
 <input type="text" name="streetaddress" placeholder="Street Address" form="shelter{{ shelter._id }}" value="{{ shelter.streetAddress or '' }}">

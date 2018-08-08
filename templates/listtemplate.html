@@ -16,7 +16,11 @@
 
                     <div class="container-fluid">
                         <div class="row">
-                            {% block name scoped %}{% endblock %}
+                            <div class="col">
+                                <div class="infobox">
+                                    {% block name scoped %}{% endblock %}
+                                </div>
+                            </div>
                             {#{% if shelter.imageURL is defined %}
                             <div class="col">
                                 <div class="infobox">{% block photo scoped %}{% endblock %}</div>
