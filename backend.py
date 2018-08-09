@@ -212,6 +212,13 @@ def getURL(address):
     return (url_string)
     #((geocode_result[0]["geometry"]["location"]["lat"]), (geocode_result[0]["geometry"]["location"]["lng"])) 
     
+def getLatLong(address):
+    geocode_result = gmaps.geocode(address)#111 W Burnside St, Portland, OR
+    #print(json.dumps(geocode_result, indent=4, sort_keys=True))
+    lat=float(geocode_result[0]["geometry"]["location"]["lat"])
+    lng=float(geocode_result[0]["geometry"]["location"]["lng"])
+    return (lat, lng)
+
 def getPlaceIdFromAddress(address):
     places = gmaps.find_place(input=[address], input_type='textquery', fields=['place_id'])
     # input (list) – The text input specifying which place to search for (for example, a name, address, or phone number).
@@ -222,3 +229,30 @@ def getPlaceIdFromAddress(address):
     # https://googlemaps.github.io/google-maps-services-python/docs/#googlemaps.Client.find_place
     return places['candidates'][0]['place_id']
 
+def getNearestPlaceWithName(address, name):
+    coords = getLatLong(address)
+    places=gmaps.places_nearby(coords, 5, name=name)
+    #     location (string, dict, list, or tuple) – The latitude/longitude value for which you wish to obtain the closest, human-readable address.
+    #     radius (int) – Distance in meters within which to bias results.
+    #     region (string) – The region code, optional parameter. See more @ https://developers.google.com/places/web-service/search
+    #     keyword (string) – A term to be matched against all content that Google has indexed for this place.
+    #     language – The language in which to return results.
+    #     min_price (int) – Restricts results to only those places with no less than this price level. Valid values are in the range from 0 (most affordable) to 4 (most expensive).
+    #     max_price (int) – Restricts results to only those places with no greater than this price level. Valid values are in the range from 0 (most affordable) to 4 (most expensive).
+    #     name (string or list of strings) – One or more terms to be matched against the names of places.
+    #     open_now (bool) – Return only those places that are open for business at the time the query is sent.
+    #     rank_by (string) – Specifies the order in which results are listed. Possible values are: prominence (default), distance
+    #     type (string) – Restricts the results to places matching the specified type. The full list of supported types is available here: https://developers.google.com/places/supported_types
+    #     page_token (string) – Token from a previous search that when provided will returns the next page of results for the same search.
+
+    # Return type:	
+
+    # result dict with the following keys: status: status code results: list of places html_attributions: set of attributions which must be displayed next_page_token: token for retrieving the next page of results
+    print(json.dumps(places, indent=4, sort_keys=True))
+
+    return places['results'][0]['place_id']
+
+def getUrlFromPlaceID(placeID):
+    return "https://www.google.com/maps/place/?q=place_id:" + str(placeID)
+
+# print(getUrlFromPlaceID(getNearestPlaceWithName('22 SW 3rd Ave, Portland, OR 97204', 'Voodoo Doughnut')))
