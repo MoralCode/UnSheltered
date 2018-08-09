@@ -127,14 +127,7 @@ def account():
             'zipcode': form.getlist('zipcode')[0]
         }
 
-        if formData['bedsFree'] > formData['capacity']:
-            flash('Error: The number of beds available cannot be higher than the shelter capacity.', 'alert-danger')
-            return redirect('/account')
-
-        if getNearestPlaceWithName(constructAddress(formData), formData['name']) == None:
-            flash('Error: The address you provided could not be found in the Google Maps database.', 'alert-danger')
-            return redirect('/account')
-
+        
         for field in form:
             if field == 'delete':
                 print("deleting")
@@ -143,12 +136,14 @@ def account():
 
             elif field == 'update':
                 print("updating")
+                validateFormData(formData)
                 formData['_id'] = ObjectId(str(form.getlist('shelter-id')[0]))
                 updateShelter(formData)
                 break
                 
             elif field == 'submit':
                 print("creating")
+                validateFormData(formData)
                 addShelter(formData)
                 break
                 
@@ -206,6 +201,23 @@ def updateShelter(shelterData):
   
     db.shelters.update_one(shelterQuery, updateQuery)
     flash('Shelter Updated!', 'alert-success')
+
+def validateFormData(formData):
+    failed=False
+    if formData['bedsFree'] > formData['capacity']:
+        flash('Error: The number of beds available cannot be higher than the shelter capacity.', 'alert-danger')
+        failed=True
+
+    if getNearestPlaceWithName(constructAddress(formData), formData['name']) == None:
+        flash('Error: The address you provided could not be found in the Google Maps database.', 'alert-danger')
+        failed=True
+    
+    if (failed):
+        return redirect('/account')
+
+
+
+
 
 def getURL(address):
     geocode_result = gmaps.geocode(address)#111 W Burnside St, Portland, OR
