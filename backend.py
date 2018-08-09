@@ -24,7 +24,7 @@ db = client.unsheltereddb
 
 app = Flask(__name__)
 oauth = OAuth(app)
-
+gmaps = googlemaps.Client(key=os.environ.get('MAPS_APIKEY'))
 
 
 app.config['SECRET_KEY'] = os.environ['FLASK_SECRET_KEY']
@@ -203,7 +203,6 @@ def updateShelter(shelterData):
     flash('Shelter Updated!', 'alert-success')
 
 def getURL(address):
-    gmaps = googlemaps.Client(key=os.environ.get('MAPS_APIKEY'))
     geocode_result = gmaps.geocode(address)#111 W Burnside St, Portland, OR
     #print(json.dumps(geocode_result, indent=4, sort_keys=True))
     lat=str(float(geocode_result[0]["geometry"]["location"]["lat"]))
