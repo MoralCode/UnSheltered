@@ -169,7 +169,8 @@ def getShelters(query=None):
         shelters = db.shelters.find(query)
 
     for shelter in shelters:
-        shelter["mapURL"] = getURL(shelter["streetAddress"]+", "+shelter["city"]+", "+shelter["state"]+" "+shelter["zipcode"])
+        address = shelter["streetAddress"]+", "+shelter["city"]+", "+shelter["state"]+" "+shelter["zipcode"]
+        shelter["mapURL"] = getUrlFromPlaceID(getNearestPlaceWithName(address, shelter['name']))
         allShelters.append(shelter)
 
     return allShelters
@@ -231,7 +232,7 @@ def getPlaceIdFromAddress(address):
 
 def getNearestPlaceWithName(address, name):
     coords = getLatLong(address)
-    places=gmaps.places_nearby(coords, 5, name=name)
+    places=gmaps.places_nearby(coords, keyword=name, rank_by='distance')#, type="lodging"
     #     location (string, dict, list, or tuple) – The latitude/longitude value for which you wish to obtain the closest, human-readable address.
     #     radius (int) – Distance in meters within which to bias results.
     #     region (string) – The region code, optional parameter. See more @ https://developers.google.com/places/web-service/search
