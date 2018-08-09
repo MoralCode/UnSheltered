@@ -91,7 +91,7 @@ def callbackHandling():
 def volunteer():
     return render_template('volunteer.html') 
 
-@app.route('/homelessRights')
+@app.route('/homelessrights')
 def homelessRights():
     return render_template('homelessRights.html')  
 
