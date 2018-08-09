@@ -29,12 +29,8 @@
 
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col">
-                                <div class="infobox">
-                                    {% block name scoped %}{% endblock %}
-                                </div>
-                            </div>
-                            {#{% if shelter.imageURL is defined %}
+
+                            {% block name scoped %}{% endblock %} {#{% if shelter.imageURL is defined %}
                             <div class="col">
                                 <div class="infobox">{% block photo scoped %}{% endblock %}</div>
                             </div>
@@ -71,9 +67,7 @@
                                     {% block amenities scoped %}{% endblock %}
                                 </div>
                             </div>
-                            {% endif %}
-                            
-                            {% if shelter.restrictions is defined %}
+                            {% endif %} {% if shelter.restrictions is defined %}
                             <div class="col">
                                 <div class="infobox">
                                     <h5>Restrictions:</h5>
@@ -81,11 +75,12 @@
                                 </div>
                             </div>
                             {% endif %}
-                            <div class="col">
+                            <!--<div class="col"
                                 <div class="infobox">
-                                    <!-- this is generated based on address-->
+                                    this is generated based on address
                                 </div>
                             </div>
+                            -->
                         </div>
                     </div>
                     {% block editform scoped %}{% endblock %}
