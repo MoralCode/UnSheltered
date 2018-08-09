@@ -186,14 +186,14 @@ def deleteShelter(id):
 def updateShelter(shelterData):
     shelterQuery={ '_id': shelterData['_id']}
     shelter=getShelters({ '_id': shelterData['_id']})[0]
-    updateQuery=None
+    updateQuery={}
 
     for key, value in shelterData.items():
         if shelter[key] != value: 
             updateQuery[key] = value
 
 
-    if updateQuery is None:
+    if updateQuery == {}:
         # flash
         return
 
