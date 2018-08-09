@@ -9,16 +9,16 @@
 <a href="{{ shelter.mapURL }}">View shelter on Google Maps</a>
 {% endblock %}
 
-{% block donationlink %}
+{% block donationlink %}{#
 <a href="{{ shelter.donationURL }}">
     <h5>Donate to this Shelter</h5>
-</a>
+</a>#}
 {% endblock %}
 
 {% block contactinfo %}
 <!-- It might be better to make these inline styles instead of block styles-->
-<!-- <p>Phone Number: {{ shelter.phoneNumber }}</p>
-<p>Email: {{ shelter.emailAddress }}</p> -->
+<!-- {#<p>Phone Number: {{ shelter.phoneNumber }}</p>
+<p>Email: {{ shelter.emailAddress }}</p>#} -->
 {% endblock %}
 
 {% block capacity %}
@@ -26,6 +26,7 @@
 {% endblock %}
 
 <!-- THIS STUFF WILL NEED TO BE CHANGED TO WORK CORRECTLY
+    {#
 {% block amenities %}
 <ul>
     {% for amenity in shelter.amenities %}
@@ -41,7 +42,7 @@
          <li>{{ restriction }}</li>
     {% endfor %}
 </ul>
-{% endblock %}
+{% endblock %}#}
 
 -->
 

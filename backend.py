@@ -7,7 +7,6 @@ from flask import url_for
 from flask import flash
 import os
 import json
-# from google.cloud import firestore
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from authlib.flask.client import OAuth
@@ -25,8 +24,6 @@ db = client.unsheltereddb
 
 app = Flask(__name__)
 oauth = OAuth(app)
-# db = firestore.Client()
-# shelters_ref = db.collection(u'shelters')
 
 
 

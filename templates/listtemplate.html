@@ -71,7 +71,9 @@
                                     {% block amenities scoped %}{% endblock %}
                                 </div>
                             </div>
-                            {% endif %} {% if shelter.restrictions is defined %}
+                            {% endif %}
+                            
+                            {% if shelter.restrictions is defined %}
                             <div class="col">
                                 <div class="infobox">
                                     <h5>Restrictions:</h5>
