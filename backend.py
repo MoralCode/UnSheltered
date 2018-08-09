@@ -131,7 +131,7 @@ def account():
             flash('Error: The number of beds available cannot be higher than the shelter capacity.', 'alert-danger')
             return redirect('/account')
 
-        if getNearestPlaceWithName(constructAddress(formData)) == None:
+        if getNearestPlaceWithName(constructAddress(formData), formData['name']) == None:
             flash('Error: The address you provided could not be found in the Google Maps database.', 'alert-danger')
             return redirect('/account')
 
