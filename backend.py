@@ -170,7 +170,7 @@ def getShelters(query=None):
 
     for shelter in shelters:
         address = shelter["streetAddress"]+", "+shelter["city"]+", "+shelter["state"]+" "+shelter["zipcode"]
-        shelter["mapURL"] = getUrlFromPlaceID(getNearestPlaceWithName(address, shelter['name']))
+        shelter["mapURL"] = getMapURLForShelter(address, shelter['name'])
         allShelters.append(shelter)
 
     return allShelters
@@ -213,6 +213,12 @@ def getURL(address):
     return (url_string)
     #((geocode_result[0]["geometry"]["location"]["lat"]), (geocode_result[0]["geometry"]["location"]["lng"])) 
     
+def getAddressPlace(address):
+    geocode_result = gmaps.geocode(address)#111 W Burnside St, Portland, OR
+    return geocode_result[0]["place_id"]
+    #((geocode_result[0]["geometry"]["location"]["lat"]), (geocode_result[0]["geometry"]["location"]["lng"])) 
+    
+
 def getLatLong(address):
     geocode_result = gmaps.geocode(address)#111 W Burnside St, Portland, OR
     #print(json.dumps(geocode_result, indent=4, sort_keys=True))
@@ -249,11 +255,25 @@ def getNearestPlaceWithName(address, name):
     # Return type:	
 
     # result dict with the following keys: status: status code results: list of places html_attributions: set of attributions which must be displayed next_page_token: token for retrieving the next page of results
-    print(json.dumps(places, indent=4, sort_keys=True))
 
-    return places['results'][0]['place_id']
+    try:
+        placeID=places['results'][0]['place_id']
+    except IndexError:
+        return None
+    else:
+        return placeID
 
 def getUrlFromPlaceID(placeID):
     return "https://www.google.com/maps/place/?q=place_id:" + str(placeID)
+
+def getMapURLForShelter(address, name):
+    placeID = getNearestPlaceWithName(address, name)
+    print(type(placeID))
+    if placeID == None:
+        placeID = getAddressPlace(address)
+    
+    return getUrlFromPlaceID(placeID)
+    
+
 
 # print(getUrlFromPlaceID(getNearestPlaceWithName('22 SW 3rd Ave, Portland, OR 97204', 'Voodoo Doughnut')))
