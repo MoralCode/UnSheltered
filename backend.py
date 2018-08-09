@@ -169,8 +169,8 @@ def getShelters(query=None):
         shelters = db.shelters.find(query)
 
     for shelter in shelters:
-        address = shelter["streetAddress"]+", "+shelter["city"]+", "+shelter["state"]+" "+shelter["zipcode"]
-        shelter["mapURL"] = getMapURLForShelter(address, shelter['name'])
+        
+        shelter["mapURL"] = getMapURLForShelter(constructAddress(shelter), shelter['name'])
         allShelters.append(shelter)
 
     return allShelters
@@ -218,6 +218,8 @@ def getAddressPlace(address):
     return geocode_result[0]["place_id"]
     #((geocode_result[0]["geometry"]["location"]["lat"]), (geocode_result[0]["geometry"]["location"]["lng"])) 
     
+def constructAddress(shelterDict):
+    return shelterDict["streetAddress"]+", "+shelterDict["city"]+", "+shelterDict["state"]+" "+shelterDict["zipcode"]
 
 def getLatLong(address):
     geocode_result = gmaps.geocode(address)#111 W Burnside St, Portland, OR
