@@ -194,7 +194,7 @@ def updateShelter(shelterData):
 
 
     if updateQuery == {}:
-        # flash
+        flash("Could not update this shelter. No information has changed", 'alert-danger')
         return
 
     updateQuery = { "$set": updateQuery }
