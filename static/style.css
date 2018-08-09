@@ -311,8 +311,7 @@ section#content {
 .rightsArticle{
     text-align: center;
     
-    margin-left: 25px;
-    margin-right: 25px;
+
 }
 
 #fistImg{
@@ -323,20 +322,22 @@ section#content {
 
 .rightsText{
     vertical-align: middle;
-    text-align: justify; 
-    margin-left:40px;
-    margin-right:40px;
+    text-align: justify;
+    
+    
 
 }
 #ventoTitle{
     text-decoration: underline;
+    vertical-align: middle;
+    text-align: center;
 }
 
 .aboutText{
     vertical-align: middle;
-    text-align: justify; 
-    margin-left:40px;
-    margin-right:40px;
+    text-align: justify;
+
+ 
 
 }
 
