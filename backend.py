@@ -212,3 +212,13 @@ def getURL(address):
     return (url_string)
     #((geocode_result[0]["geometry"]["location"]["lat"]), (geocode_result[0]["geometry"]["location"]["lng"])) 
     
+def getPlaceIdFromAddress(address):
+    places = gmaps.find_place(input=[address], input_type='textquery', fields=['place_id'])
+    # input (list) – The text input specifying which place to search for (for example, a name, address, or phone number).
+    # input_type (string) – The type of input. This can be one of either ‘textquery’ or ‘phonenumber’.
+    # fields – The fields specifying the types of place data to return, separated by a comma. For full details see: https://developers.google.com/places/web-service/search#FindPlaceRequests
+    # location_bias (string) – Prefer results in a specified area, by specifying either a radius plus lat/lng, or two lat/lng pairs representing the points of a rectangle. See: https://developers.google.com/places/web-service/search#FindPlaceRequests
+    # language – The language in which to return results.
+    # https://googlemaps.github.io/google-maps-services-python/docs/#googlemaps.Client.find_place
+    return places['candidates'][0]['place_id']
+
