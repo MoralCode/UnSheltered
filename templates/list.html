@@ -6,7 +6,7 @@
 {% block address %}
 <p>{{ shelter.streetAddress }},<br>
 {{ shelter.city }}, {{ shelter.state }} {{ shelter.zipcode }}</p>
-<a href="{{ shelter.mapURL }}">View shelter on Google Maps</a>
+<a href="{{ shelter.mapURL }}" target="_blank">View shelter on Google Maps</a>
 {% endblock %}
 
 {% block donationlink %}{#
