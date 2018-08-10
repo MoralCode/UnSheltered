@@ -38,10 +38,10 @@ courtesy: https://stackoverflow.com/a/14215034 -->
 <input type="text" name="emailAddress" form="shelter{{ shelter._id }}" value="{{ shelter.emailAddress or '' }}"> {% endblock %}
 
 {% block capacity %}
-<label for="bedsFree">Beds Available:</label>
-<input type="number" name="bedsFree" required min="0" max="10000" class="inputnumber" form="shelter{{ shelter._id }}" value="{{ shelter.bedsFree or '' }}">
+<label for="bedsFree" style="width:100%">Beds Available:</label>
+<input type="number"name="bedsFree" required min="0" max="10000" class="inputnumber" form="shelter{{ shelter._id }}" value="{{ shelter.bedsFree or '' }}">
 <br>
-<label for="capacity">Total Capacity:</label>
+<label for="capacity" style="width:100%">Total Capacity:</label>
 <input type="number" name="capacity" required min="0" max="10000" class="inputnumber" form="shelter{{ shelter._id }}" value="{{ shelter.capacity or '' }}"> {% endblock %}
 
 
