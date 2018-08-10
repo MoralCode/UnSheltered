@@ -127,7 +127,8 @@ def account():
             'state': 'Oregon',
             'zipcode': form.getlist('zipcode')[0],
             'phoneNumber': form.getlist('phoneNumber')[0],
-            'emailAddress': form.getlist('emailAddress')[0]
+            'emailAddress': form.getlist('emailAddress')[0],
+            'webURL': form.getlist('webURL')[0]
         }
 
         for field in form:

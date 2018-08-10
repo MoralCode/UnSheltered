@@ -35,8 +35,12 @@ courtesy: https://stackoverflow.com/a/14215034 -->
 <input type="tel" pattern="[0-9]{10}" name="phoneNumber" form="shelter{{ shelter._id }}" value="{{ shelter.phoneNumber or '' }}">
 <br>
 <label for="emailAddress">Email Address:</label>
-<input type="text" name="emailAddress" form="shelter{{ shelter._id }}" value="{{ shelter.emailAddress or '' }}"> {% endblock %}
+<input type="text" name="emailAddress" form="shelter{{ shelter._id }}" value="{{ shelter.emailAddress or '' }}">
+<br>
+<label for="webURL">Website URL:</label>
+<input type="text" name="webURL" form="shelter{{ shelter._id }}" value="{{ shelter.websiteURL or '' }}">
 
+{% endblock %}
 {% block capacity %}
 <label for="bedsFree" style="width:100%">Beds Available:</label>
 <input type="number"name="bedsFree" required min="0" max="10000" class="inputnumber" form="shelter{{ shelter._id }}" value="{{ shelter.bedsFree or '' }}">
