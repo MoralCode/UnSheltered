@@ -127,7 +127,6 @@ def account():
             'zipcode': form.getlist('zipcode')[0]
         }
 
-        
         for field in form:
             if field == 'delete':
                 print("deleting")
@@ -135,16 +134,16 @@ def account():
                 break
 
             elif field == 'update':
-                print("updating")
-                validateFormData(formData)
-                formData['_id'] = ObjectId(str(form.getlist('shelter-id')[0]))
-                updateShelter(formData)
+                if isFormDataValid(formData):
+                    print("updating")
+                    formData['_id'] = ObjectId(str(form.getlist('shelter-id')[0]))
+                    updateShelter(formData)
                 break
                 
             elif field == 'submit':
-                print("creating")
-                validateFormData(formData)
-                addShelter(formData)
+                if isFormDataValid(formData):
+                    print("creating")
+                    addShelter(formData)
                 break
                 
         return redirect('/account')
@@ -202,18 +201,17 @@ def updateShelter(shelterData):
     db.shelters.update_one(shelterQuery, updateQuery)
     flash('Shelter Updated!', 'alert-success')
 
-def validateFormData(formData):
-    failed=False
+def isFormDataValid(formData):
+    passed=True
     if formData['bedsFree'] > formData['capacity']:
         flash('Error: The number of beds available cannot be higher than the shelter capacity.', 'alert-danger')
-        failed=True
+        passed=False
 
     if getNearestPlaceWithName(constructAddress(formData), formData['name']) == None:
         flash('Error: The address you provided could not be found in the Google Maps database.', 'alert-danger')
-        failed=True
+        passed=False
     
-    if (failed):
-        return redirect('/account')
+    return passed
 
 
 
