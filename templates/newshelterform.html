@@ -13,7 +13,7 @@
                 <br>
                 <input type="text" name="city" value="Portland" disabled size="4" style="min-width: 70px">
                 <input type="text" name="state" value="OR" disabled size="2" style="min-width: 25px">
-                <select name="zipcode">
+                <select name="zipcode" required>
                     {% for zip in range(97201, 97300) %} {# inclusive, exclusive #}
                     <option value="{{ zip }}">{{ zip }}</option>
                     {% endfor %}
