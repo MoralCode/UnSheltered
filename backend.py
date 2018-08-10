@@ -69,7 +69,7 @@ def injectLoginState():
 
 @app.route('/')
 def home():
-    return render_template('homepage.html', shelters=getShelters())
+    return render_template('homepage.html', shelters=sortByBedsFree(getShelters()))
 
 
 @app.route('/logincallback')
@@ -173,6 +173,8 @@ def getShelters(query=None):
 
     return allShelters
 
+def sortByBedsFree(shelters):
+    return sorted(shelters, key=lambda shelter: shelter['bedsFree'], reverse=True)
 
 def addShelter(shelter):
     db.shelters.insert(shelter)
