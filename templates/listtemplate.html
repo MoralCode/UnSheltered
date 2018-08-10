@@ -47,12 +47,14 @@
                             </div>
                         </div>
                         {% endif %#}
+                        {% if shelter.emailAddress is defined or shelter.phoneNumber is defined %}
                         <div class="col" style="margin-bottom: 10px">
                             <div class="infobox">
                                 <h5>Contact Information:</h5>
                                 {% block contactinfo scoped %}{% endblock %}
                             </div>
                         </div>
+                        {% endif %}
                         <div class="col" style="margin-bottom: 10px">
                             <div class="infobox">
                                 <h5>Occupancy:</h5>
