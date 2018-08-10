@@ -211,10 +211,10 @@ def isFormDataValid(formData):
     if formData['bedsFree'] > formData['capacity']:
         flash('Error: The number of beds available cannot be higher than the shelter capacity.', 'alert-danger')
         passed=False
-
-    if getNearestPlaceWithName(constructAddress(formData), formData['name']) == None:
-        flash('Error: The address you provided could not be found in the Google Maps database.', 'alert-danger')
-        passed=False
+    #removed address validation on form submit because it was incorrectly fetching 
+    # if getNearestPlaceWithName(constructAddress(formData), formData['name']) == None:
+    #     flash('Error: The address you provided could not be found in the Google Maps database.', 'alert-danger')
+    #     passed=False
     
     return passed
 
