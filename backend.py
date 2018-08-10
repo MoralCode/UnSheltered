@@ -116,7 +116,7 @@ def account():
                 )
     elif request.method == 'POST':
         form = request.form
-        print(form)
+        
         formData = {
             'name': form.getlist('name')[0],
             'owner': str(getCurrentUserId()),#potential security issue?
@@ -194,7 +194,6 @@ def updateShelter(shelterData):
     updateQuery={}
 
     for key, value in shelterData.items():
-
         if 'phoneNumber' not in shelter.keys():
             shelter['phoneNumber'] = ''
         if 'emailAddress' not in shelter.keys():
