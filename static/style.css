@@ -322,7 +322,7 @@ section#content {
 
 .rightsText{
     vertical-align: middle;
-    text-align: justify;
+    
     
     
 
@@ -335,7 +335,7 @@ section#content {
 
 .aboutText{
     vertical-align: middle;
-    text-align: justify;
+    
 
  
 
@@ -345,6 +345,11 @@ section#content {
     text-align: center;
 }
   .dropdown:hover .dropbtn {background-color: #066CE2;}
+
+
+.inputnumber{
+    max-width: 90px;
+}
 
 
 
