@@ -116,6 +116,7 @@ def account():
                 )
     elif request.method == 'POST':
         form = request.form
+        print(form)
         formData = {
             'name': form.getlist('name')[0],
             'owner': str(getCurrentUserId()),#potential security issue?
@@ -124,7 +125,9 @@ def account():
             'streetAddress': form.getlist('streetaddress')[0],
             'city': 'Portland',
             'state': 'Oregon',
-            'zipcode': form.getlist('zipcode')[0]
+            'zipcode': form.getlist('zipcode')[0],
+            'phoneNumber': form.getlist('phoneNumber')[0],
+            'emailAddress': form.getlist('emailAddress')[0]
         }
 
         for field in form:
