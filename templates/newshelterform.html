@@ -6,15 +6,14 @@
                 <label for="name">Shelter Name:</label>
                 <input type="text" name="name" required value="{{ shelter.name if shelter is defined else '' }}">
             </div>
-            <div class="col-12" style="margin-bottom:20px">
+            <div class="col-12" style="margin-bottom:10px">
                 <label>Address:</label>
                 <br>
                 <input type="text" name="streetaddress" placeholder="Street Address" required>
                 <br>
-                <input type="text" name="city" value="Portland" disabled size="4" style="min-width: 70px">
-                <input type="text" name="state" value="OR" disabled size="2" style="min-width: 25px">
-                <select name="zipcode" required>
-                    <option disabled selected value>-select-</option>
+                <input type="text" name="city" value="Portland" disabled size="4" style="min-width: 70px; margin-bottom:10px">
+                <input type="text" name="state" value="OR" disabled size="2" style="min-width: 25px; margin-bottom:10px">
+                <select name="zipcode" style="margin-bottom:10px">
                     {% for zip in range(97201, 97300) %} {# inclusive, exclusive #}
                     <option value="{{ zip }}">{{ zip }}</option>
                     {% endfor %}
@@ -26,7 +25,7 @@
                 <input type="tel" pattern="[0-9]{10}" name="phoneNumber" placeholder="Phone Number" required>
                 <br>
                 <label for="emailAddress">Email Address:</label>
-                <input type="email" name="emailAddress" placeholder="Email Address">
+                <input type="email" name="emailAddress" placeholder="Email Address" style="margin-bottom:10px;">
             </div>
             <div class="col" style="margin-bottom:10px">
                 <label for="bedsFree">Spaces Free:</label>

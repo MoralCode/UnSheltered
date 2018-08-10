@@ -39,10 +39,10 @@ courtesy: https://stackoverflow.com/a/14215034 -->
 
 {% block capacity %}
 <label for="bedsFree">Beds Available:</label>
-<input type="number" name="bedsFree" required min="0" max="10000" form="shelter{{ shelter._id }}" value="{{ shelter.bedsFree or '' }}">
+<input type="number" name="bedsFree" required min="0" max="10000" class="inputnumber" form="shelter{{ shelter._id }}" value="{{ shelter.bedsFree or '' }}">
 <br>
 <label for="capacity">Total Capacity:</label>
-<input type="number" name="capacity" required min="0" max="10000" form="shelter{{ shelter._id }}" value="{{ shelter.capacity or '' }}"> {% endblock %}
+<input type="number" name="capacity" required min="0" max="10000" class="inputnumber" form="shelter{{ shelter._id }}" value="{{ shelter.capacity or '' }}"> {% endblock %}
 
 
 {% block amenities %}
@@ -56,9 +56,9 @@ courtesy: https://stackoverflow.com/a/14215034 -->
 {% block editform %}
 <form action="{{ url_for('account') }}" id="shelter{{ shelter._id }}" method="post">
   <input type="text" name="shelter-id" value="{{ shelter._id }}" hidden>
-  <input type="submit" class="btn btn-primary" name="update" value="Update Shelter Listing">
-  <input type="submit" class="btn btn-danger" name="delete" value="Delete Shelter Listing">
-  <input type="reset" class="btn btn-secondary" name="Reset form" value="Reset this form">
+  <input type="submit" class="btn btn-primary editformbutton" name="update" value="Update Shelter Listing">
+  <input type="submit" class="btn btn-danger editformbutton" name="delete" value="Delete Shelter Listing">
+  <input type="reset" class="btn btn-secondary editformbutton" name="Reset form" value="Reset this form">
 </form>
 {% endblock %}
 

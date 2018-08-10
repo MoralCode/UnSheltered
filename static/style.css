@@ -336,9 +336,7 @@ section#content {
 
 .aboutText{
     vertical-align: middle;
-    text-align: left;    
-
- 
+    text-align: left;
 
 }
 
@@ -350,6 +348,11 @@ section#content {
 
 .inputnumber{
     max-width: 90px;
+}
+
+.editformbutton{
+    margin-bottom: 10px;
+    margin-left: 10px;
 }
 
 

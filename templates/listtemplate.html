@@ -34,7 +34,7 @@
                             <div class="infobox">{% block photo scoped %}{% endblock %}</div>
                         </div>
                         {% endif %}#}
-                        <div class="col">
+                        <div class="col" style="margin-bottom: 10px">
                             <div class="infobox">
                                 <h5>Address:</h5>
                                 {% block address scoped %}{% endblock %}
@@ -47,27 +47,27 @@
                             </div>
                         </div>
                         {% endif %#}
-                        <div class="col">
+                        <div class="col" style="margin-bottom: 10px">
                             <div class="infobox">
                                 <h5>Contact Information:</h5>
                                 {% block contactinfo scoped %}{% endblock %}
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col" style="margin-bottom: 10px">
                             <div class="infobox">
                                 <h5>Occupancy:</h5>
                                 {% block capacity scoped %}{% endblock %}
                             </div>
                         </div>
                         {% if shelter.amenities is defined %}
-                        <div class="col">
+                        <div class="col" style="margin-bottom: 10px">
                             <div class="infobox">
                                 <h5>Amenities:</h5>
                                 {% block amenities scoped %}{% endblock %}
                             </div>
                         </div>
                         {% endif %} {% if shelter.restrictions is defined %}
-                        <div class="col">
+                        <div class="col" style="margin-bottom: 10px">
                             <div class="infobox">
                                 <h5>Restrictions:</h5>
                                 {% block restrictions scoped %}{% endblock %}
