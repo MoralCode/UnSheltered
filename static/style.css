@@ -322,6 +322,7 @@ section#content {
 
 .rightsText{
     vertical-align: middle;
+    text-align: left;
     
     
     
@@ -335,7 +336,7 @@ section#content {
 
 .aboutText{
     vertical-align: middle;
-    
+    text-align: left;    
 
  
 
