@@ -5,9 +5,7 @@ courtesy: https://stackoverflow.com/a/14215034 -->
 {% block name %}
 <div class="col">
   <div class="infobox">
-    <label for="name">
       <h5>Shelter Name:</h5>
-    </label>
     <input type="text" name="name" form="shelter{{ shelter._id }}" value="{{ shelter.name or '' }}">
   </div>
 </div>
