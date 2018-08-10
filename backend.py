@@ -223,12 +223,8 @@ def constructAddress(shelterDict):
     return shelterDict["streetAddress"]+", "+shelterDict["city"]+", "+shelterDict["state"]+" "+shelterDict["zipcode"]
 
 def getLatLong(address):
-    geocode_result = gmaps.geocode(address)#111 W Burnside St, Portland, OR
-    #print(json.dumps(geocode_result, indent=4, sort_keys=True))
-    lat=float(geocode_result[0]["geometry"]["location"]["lat"])
-    lng=float(geocode_result[0]["geometry"]["location"]["lng"])
-    return (lat, lng)
-
+    location = gmaps.geocode(address)[0]["geometry"]["location"]#111 W Burnside St, Portland, OR
+    return (location['lat'], location['lng'])
 
 def getNearestPlaceWithName(address, name):
     coords = getLatLong(address)
@@ -237,17 +233,10 @@ def getNearestPlaceWithName(address, name):
     #     radius (int) – Distance in meters within which to bias results.
     #     region (string) – The region code, optional parameter. See more @ https://developers.google.com/places/web-service/search
     #     keyword (string) – A term to be matched against all content that Google has indexed for this place.
-    #     language – The language in which to return results.
-    #     min_price (int) – Restricts results to only those places with no less than this price level. Valid values are in the range from 0 (most affordable) to 4 (most expensive).
-    #     max_price (int) – Restricts results to only those places with no greater than this price level. Valid values are in the range from 0 (most affordable) to 4 (most expensive).
     #     name (string or list of strings) – One or more terms to be matched against the names of places.
-    #     open_now (bool) – Return only those places that are open for business at the time the query is sent.
     #     rank_by (string) – Specifies the order in which results are listed. Possible values are: prominence (default), distance
     #     type (string) – Restricts the results to places matching the specified type. The full list of supported types is available here: https://developers.google.com/places/supported_types
-    #     page_token (string) – Token from a previous search that when provided will returns the next page of results for the same search.
-
     # Return type:	
-
     # result dict with the following keys: status: status code results: list of places html_attributions: set of attributions which must be displayed next_page_token: token for retrieving the next page of results
 
     try:
