@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
     crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
 
   <!--This is for Font Awesome-->
   <script src="https://use.fontawesome.com/b0eda0fe6e.js"></script>
@@ -25,18 +25,18 @@
 
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-64146907-5"></script>
-<script>
-  //only track views on the heroku server. we dont want to track dev server activity
-  if (window.location.hostname == "un-sheltered.herokuapp.com") {
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-64146907-5"></script>
+  <script>
+    //only track views on the heroku server. we dont want to track dev server activity
+    if (window.location.hostname == "un-sheltered.herokuapp.com") {
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
 
-    gtag('config', 'UA-64146907-5');
-  
-  }
-</script>
+      gtag('config', 'UA-64146907-5');
+
+    }
+  </script>
 
 </head>
 
@@ -50,9 +50,9 @@
             <button type="button" class="btn btn-headerprimary dropdown-toggle" data-toggle="dropdown">Menu</button>
             <div class="dropdown-menu dropdown-menu-right">
               <a class="dropdown-item" href="/volunteer">Volunteer Opportunities</a>
-              <a class="dropdown-item" href="/account">Account</a>
               <a class="dropdown-item" href="/about">About Us</a>
               <a class="dropdown-item" href="/homelessrights">Homeless Rights</a>
+              <a class="dropdown-item" href="/account">Account</a>
               {% if loggedin %}
               <a class="dropdown-item" href="/logout">Log Out</a>
               {% endif %}
@@ -89,21 +89,19 @@
 
 
   </header>
-  {% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    {% for category, message in messages %}
-      <div class="alert {{ category }}">{{ message }}</div>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
+  {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %}
+  <div class="alert {{ category }}">{{ message }}</div>
+  {% endfor %} {% endif %} {% endwith %}
   <section class="container-fluid" id="content">
     {% block content %} {% endblock %}
   </section>
   <footer id="site-footer">
-    <p>Copyright 2018 ~ NWAPW Project. View the code on <a href="https://github.com/MoralCode/UnSheltered" target="_blank">GitHub</a></p>
+    <p>Copyright 2018 ~ NWAPW Project. View the code on
+      <a href="https://github.com/MoralCode/UnSheltered" target="_blank">GitHub</a>
+    </p>
   </footer>
 
- 
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
