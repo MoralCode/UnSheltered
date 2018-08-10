@@ -14,8 +14,11 @@
 
 <p>Phone Number: {{ shelter.phoneNumber }}</p>
 {% endif %}
-{%if shelter.emailAddress is defined %}
+{% if shelter.emailAddress is defined %}
 <p>Email: {{ shelter.emailAddress }}</p>
+{% endif %}
+{% if shelter.websiteURL is defined %}
+<a href="{{ shelter.websiteURL }}">Website</a>
 {% endif %}
 
 {% endblock %}
