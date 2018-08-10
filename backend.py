@@ -213,19 +213,6 @@ def isFormDataValid(formData):
     
     return passed
 
-
-
-
-
-def getURL(address):
-    geocode_result = gmaps.geocode(address)#111 W Burnside St, Portland, OR
-    #print(json.dumps(geocode_result, indent=4, sort_keys=True))
-    lat=str(float(geocode_result[0]["geometry"]["location"]["lat"]))
-    lng=str(float(geocode_result[0]["geometry"]["location"]["lng"]))
-    placeid=(geocode_result[0]["place_id"])
-    url_string = "https://www.google.com/maps/search/?api=1&query="+lat+","+lng+"&query_place_id="+placeid
-    return (url_string)
-    #((geocode_result[0]["geometry"]["location"]["lat"]), (geocode_result[0]["geometry"]["location"]["lng"])) 
     
 def getAddressPlace(address):
     geocode_result = gmaps.geocode(address)#111 W Burnside St, Portland, OR
@@ -242,15 +229,6 @@ def getLatLong(address):
     lng=float(geocode_result[0]["geometry"]["location"]["lng"])
     return (lat, lng)
 
-def getPlaceIdFromAddress(address):
-    places = gmaps.find_place(input=[address], input_type='textquery', fields=['place_id'])
-    # input (list) – The text input specifying which place to search for (for example, a name, address, or phone number).
-    # input_type (string) – The type of input. This can be one of either ‘textquery’ or ‘phonenumber’.
-    # fields – The fields specifying the types of place data to return, separated by a comma. For full details see: https://developers.google.com/places/web-service/search#FindPlaceRequests
-    # location_bias (string) – Prefer results in a specified area, by specifying either a radius plus lat/lng, or two lat/lng pairs representing the points of a rectangle. See: https://developers.google.com/places/web-service/search#FindPlaceRequests
-    # language – The language in which to return results.
-    # https://googlemaps.github.io/google-maps-services-python/docs/#googlemaps.Client.find_place
-    return places['candidates'][0]['place_id']
 
 def getNearestPlaceWithName(address, name):
     coords = getLatLong(address)
