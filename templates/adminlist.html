@@ -1,0 +1,74 @@
+{% extends "listtemplate.html" %}
+<!-- theQuestion="{{ tobe or 'Not to be' }}"
+courtesy: https://stackoverflow.com/a/14215034 -->
+
+{% block name %}
+<div class="col">
+  <div class="infobox">
+      <h5>Shelter Name:</h5>
+    <input type="text" name="name" form="shelter{{ shelter._id }}" value="{{ shelter.name or '' }}">
+  </div>
+</div>
+
+{% endblock %} 
+
+{% block photo %} {#
+<label for="imageURL">Image URL:</label>
+<input type="url" name="imageURL" form="shelter{{ shelter._id }}" value="{{ shelter.imageURL or '' }}"> note: this only accepts URL's at this time. file uploads are not supported.#} {% endblock %} {% block address %}
+<input type="text" name="streetaddress" placeholder="Street Address" form="shelter{{ shelter._id }}" value="{{ shelter.streetAddress or '' }}">
+<br>
+<input type="text" name="city" value="Portland" disabled size="4" form="shelter{{ shelter._id }}">
+<input type="text" name="state" value="OR" disabled size="2" form="shelter{{ shelter._id }}">
+<select name="zipcode" form="shelter{{ shelter._id }}">
+  {% for zip in range(97201, 97300) %} {# inclusive, exclusive #}
+  <option {% if shelter.zipcode==zip %}selected{% endif %} value="{{ zip }}">{{ zip }}</option>
+  {% endfor %}
+</select>
+{% endblock %}
+
+{% block donationlink %}
+<label for="donationURL">Link to donations page:</label>
+<input type="url" name="donationURL" form="shelter{{ shelter._id }}" value="{{ shelter.donationURL or '' }}"> {% endblock %}
+
+{% block contactinfo %}
+<label for="phoneNumber">Phone Number:</label>
+<input type="tel" pattern="(\d{3}[\-]\d{3}[\-]\d{4})|([0-9]{10})" name="phoneNumber" form="shelter{{ shelter._id }}" value="{{ shelter.phoneNumber or '' }}" placeholder="Phone Number">
+<br>
+<label for="emailAddress">Email Address:</label>
+<input type="text" name="emailAddress" form="shelter{{ shelter._id }}" value="{{ shelter.emailAddress or '' }}" placeholder="name@shelterwebsite.com">
+<br>
+<label for="webURL">Website URL:</label>
+<input type="text" name="webURL" form="shelter{{ shelter._id }}" value="{{ shelter.websiteURL or '' }}" placeholder="www.shelterwebsite.com">
+
+{% endblock %}
+{% block capacity %}
+<label for="bedsFree" style="width:100%">Beds Available:</label>
+<input type="number"name="bedsFree" required min="0" max="10000" class="inputnumber" form="shelter{{ shelter._id }}" value="{{ shelter.bedsFree or '' }}">
+<br>
+<label for="capacity" style="width:100%">Total Capacity:</label>
+<input type="number" name="capacity" required min="0" max="10000" class="inputnumber" form="shelter{{ shelter._id }}" value="{{ shelter.capacity or '' }}"> {% endblock %}
+
+
+{% block amenities %}
+{% endblock %}
+
+
+{% block restrictions %}
+{% endblock %}
+
+
+{% block editform %}
+<form action="{{ url_for('account') }}" id="shelter{{ shelter._id }}" method="post">
+  <input type="text" name="shelter-id" value="{{ shelter._id }}" hidden>
+  <input type="submit" class="btn btn-primary editformbutton" name="update" value="Update Shelter Listing">
+  <input type="submit" class="btn btn-danger editformbutton" name="delete" value="Delete Shelter Listing">
+  <input type="reset" class="btn btn-secondary editformbutton" name="Reset form" value="Reset this form">
+</form>
+{% endblock %}
+
+{% block newform %}
+<details class="shelterListEntry">
+  <summary class="shelterTitle">Add Shelter</summary>
+  {% include 'newshelterform.html' %}
+</details>
+{% endblock %}

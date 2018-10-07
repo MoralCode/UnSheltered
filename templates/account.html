@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}Account{% endblock %}
+
+{% block head %}
+  {{ super() }}
+
+
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-2">
+        <!-- <a href="/logout">
+          <button class="btn btn-danger">Log Out</button> 
+        </a> -->
+    </div>
+    <h1 id="manageTitle" class="col-md-8"> Manage Your Shelters </h1>
+    <div class="col-md-2 text-center">
+      <a href="/logout">
+        <button class="btn btn-danger">Log Out</button> 
+      </a>
+    </div>
+  </div>
+    
+    {% include 'adminlist.html' %}    
+  
+{% endblock %}

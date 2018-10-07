@@ -1,0 +1,82 @@
+{% extends "listtemplate.html" %} {#{% block photo %}
+<img src="{{ shelter.imageURL }}" />{% endblock %}#} {% block address %}
+<p>{{ shelter.streetAddress }},
+    <br> {{ shelter.city }}, {{ shelter.state }} {{ shelter.zipcode }}</p>
+<a href="{{ shelter.mapURL }}" target="_blank">View shelter on Google Maps</a>
+{% endblock %} {% block donationlink %}{#
+<a href="{{ shelter.donationURL }}">
+    <h5>Donate to this Shelter</h5>
+</a>#} {% endblock %}
+
+{% block contactinfo %}
+{% if shelter.phoneNumber is defined %}
+<!-- It might be better to make these inline styles instead of block styles-->
+
+<p>Phone Number: {{ shelter.phoneNumber }}</p>
+{% endif %}
+{% if shelter.emailAddress is defined %}
+<p>Email: {{ shelter.emailAddress }}</p>
+{% endif %}
+{% if shelter.websiteURL is defined %}
+<a href="{{ shelter.websiteURL }}">Website</a>
+{% endif %}
+
+{% endblock %}
+
+{% block capacity %}
+<p>{{ shelter.capacity-shelter.bedsFree }} / {{ shelter.capacity }} Spaces filled</p>
+{% endblock %}
+
+<!-- THIS STUFF WILL NEED TO BE CHANGED TO WORK CORRECTLY
+    {#
+{% block amenities %}
+<ul>
+    {% for amenity in shelter.amenities %}
+        <li>{{ amenity }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+
+{% block restrictions %}
+<ul>
+    {% for restriction in shelter.restrictions %}
+         <li>{{ restriction }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}#}
+
+-->
+
+
+
+<!--Please DO NOT DELETE THIS. If we are going to add checkboxes/lists this is very helpful! It is the Boostrap for that.
+<div class="col">
+        <div class="infobox">
+
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck1" checked disabled>
+                <label class="custom-control-label" for="customCheck1">Checkbox 1</label>
+            </div>
+
+
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck2" disabled>
+                <label class="custom-control-label" for="customCheck2">Checkbox 2</label>
+            </div>
+
+
+
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input checked" id="customCheck3" disabled>
+                <label class="custom-control-label" for="customCheck3">Checkbox 3</label>
+            </div>
+
+
+
+        </div>
+    </div>
+
+-->

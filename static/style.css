@@ -3,20 +3,26 @@
         body, html{
             margin: 0;
             padding: 0; 
+            height: 100%;
             font-family: 'Libre Franklin', sans-serif; /* i think you can directly reference the font URL here instead of linking it to the HTML -Adrian */
             letter-spacing: 0.1em;
-            background-color: #fcfdff;
+            background-color: #d6e6ee;
          }
- 
+         
+         
          header#site-header{
-             background-color: #2ee571;
-             color: hsl(131, 77%, 19%);
+             background-color: #778fcf;
+             /* background: linear-gradient(#72ccdf, #dcebee); */
+             color: #a4c9e7;
              width: 100%;
-             height: 80px;
+             height: 90px;
              margin: 0 0 10px 0;
              padding: 0;
              font-size: 20px;
              text-align: center;
+         }
+         .hidden {
+             display: none;
          }
 
          header img {
@@ -25,7 +31,7 @@
             margin: -25px 0 0 0;
             margin-left: auto;
 	        margin-right: auto;
-	        display: block;
+            display: inline-block;
         }
          
          #login{
@@ -49,6 +55,17 @@
           */
          details summary::-webkit-details-marker {display:none;}
          details summary {list-style-type: none;}
+
+
+         .warningColor {
+            color:rgb(255, 217, 0);
+         }
+    
+         .shelterWarningIcon{
+             flex: 1; /* This can probably be replaced with bootstrap later */
+            font-size: 22px
+         }
+         
  
      #sheltercontainer {
          display: flex;
@@ -57,20 +74,20 @@
          align-content: flex-start;
          display: block;
          overflow: auto;
-         width: 70%;
+         width: 100%;
          margin: 0 auto;
      }
  
-     .shelter {
+     .shelterListEntry {
          
          flex: 1;
-         margin: 20px;
-         padding: 5px;
-         background-color: #eeeeee;
+         /*margin: 20px;*/
+         /*padding: 5px;*/
+         background-color:#a4c9e7;
      }
 
      #selected {
-        background-color: #eaee; /* CHANGE THIS IF YOU WANT, TO MAKE INDIVIDUAL BOXES HAVE DIFFERENT BACKGROUND COLORS YOU NEED TO MAKE THIS KIND OF THING AGAIN ELSEWHERE*/
+        background-color:none; /* CHANGE THIS IF YOU WANT, TO MAKE INDIVIDUAL BOXES HAVE DIFFERENT BACKGROUND COLORS YOU NEED TO MAKE THIS KIND OF THING AGAIN ELSEWHERE*/
      }
 
      .infoContainer {
@@ -84,11 +101,15 @@
      }
 
      .infobox {
+         /*margin: 15px;
         clear: both;
-        margin: 15px;
         flex-wrap: wrap;
         min-width: 15%;
-        max-width: 35%;
+       max-width: 35%;*/
+       min-width: 8em;
+       word-wrap: break-word;
+       /*flex-grow: 1;
+       flex-shrink: 1;*/
     }
 
      .shelterSummary {
@@ -100,7 +121,8 @@
         flex: 9; /* This can probably be replaced with bootstrap later */
         font-weight: bold;
         font-size: 22px;
-        margin: 5px;
+        margin: 8px;
+        margin-left: 15px;
      }
 
      .shelterOccupancy {
@@ -137,22 +159,23 @@
     }
     
     .aligntoptitle {
-        text-align: center;
+        /*text-align: center;*/
         min-height: 20px;
     }
     .aligntoptext {
-        text-align: center;
+        /*text-align: center;*/
         min-height: 40px;
     }
 
 /*CHECKMARK STUFF BEGINS HERE ! ! ! BE ADVISED ! ! !*/
     /* Customize the label (the container) */
-.container {
+.checkBoxContainer {
     display: block;
     position: relative;
     padding-left: 30px;
     margin-right: 10px;
     margin-bottom: 12px;
+    margin-top: 15px;
     cursor: pointer;
     font-size: 15px;
     -webkit-user-select: none;
@@ -162,7 +185,7 @@
   }
   
   /* Hide the browser's default checkbox */
-  .container input {
+  .checkBoxContainer input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -185,7 +208,7 @@
   }
   
   /* When the checkbox is checked, add a blue background */
-  .container input:checked ~ .checkmark {
+  .checkBoxContainer input:checked ~ .checkmark {
     background-color: #2196F3;
   }
   
@@ -197,12 +220,12 @@
   }
   
   /* Show the checkmark when checked */
-  .container input:checked ~ .checkmark:after {
+  .checkBoxContainer input:checked ~ .checkmark:after {
     display: block;
   }
 
   /* Style the checkmark/indicator */
-.container .checkmark:after {
+.checkBoxContainer .checkmark:after {
     left: 9px;
     top: 5px;
     width: 5px;
@@ -212,4 +235,200 @@
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+  }
+
+  
+
+input[type=checkbox] {
+  /* Double-sized Checkboxes */
+  transform: scale(2, 2);
+  padding: 10px;
+}
+
+section#content {
+    margin-bottom: 25px
+}
+
+
+  footer#site-footer{
+      height: 25px;
+      width: 100%;
+      text-align: center;
+      bottom:0;
+  }
+  
+
+
+#calendar{
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+}
+
+  .dropbtn1 {
+      background-color: #778fcf;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      height: 64px;
+  }
+
+  .dropdown1 {
+      position: absolute;
+      display: inline-block;
+      top:0;
+      right: 0;
+      margin-top: 1px;
+      margin-left: 2px;
+      
+  }
+
+  .dropdown-content1 {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      right: 0;
+      
+  }
+
+  .dropdown-content1 a{
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;    
+      display: block;
+  }
+
+  .dropdown-content1 a:hover {background-color: #ddd;}
+
+  .dropdown1:hover .dropdown-content1 {display: block;}
+
+  .dropdown1:hover .dropbtn1 {background-color: #066CE2;}
+
+.rightsArticle{
+    text-align: center;
+    
+
+}
+
+#fistImg{
+    text-align: center;
+    width: 50px;
+    height: auto;
+}
+
+.rightsText{
+    vertical-align: middle;
+    text-align: left;
+    
+    
+    
+
+}
+#ventoTitle{
+    text-decoration: underline;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.aboutText{
+    vertical-align: middle;
+    text-align: left;
+
+}
+
+#manageTitle{
+    text-align: center;
+}
+  .dropdown:hover .dropbtn {background-color: #066CE2;}
+
+
+.inputnumber{
+    max-width: 90px;
+}
+
+.editformbutton{
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+
+
+
+/* Responsive iFrame */
+
+.responsive-iframe-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+    }
+    
+    .responsive-iframe-container iframe,
+    .vresponsive-iframe-container object,
+    .vresponsive-iframe-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    }
+
+
+
+
+
+
+
+  /* OVERRIDING A BUUUUUUUUNCH OF STUFF FOR CUSTOM BUTTOMS*/
+  
+  .btn-headerprimary { 
+    color: #ffffff; 
+    background-color: #778FCF; 
+    border-color: #778FCF; 
+    padding: 0px;
+  } 
+   
+  .btn-headerprimary:hover, 
+  .btn-headerprimary:focus, 
+  .btn-headerprimary:active, 
+  .btn-headerprimary.active, 
+  .open .dropdown-toggle.btn-headerprimary { 
+    color: #ffffff; 
+    background-color: rgb(92, 105, 221); 
+    border-color: #778FCF; 
+  } 
+   
+  .btn-headerprimary:active, 
+  .btn-headerprimary.active, 
+  .open .dropdown-toggle.btn-headerprimary { 
+    background-image: none; 
+  } 
+   
+  .btn-headerprimary.disabled, 
+  .btn-headerprimary[disabled], 
+  fieldset[disabled] .btn-headerprimary, 
+  .btn-headerprimary.disabled:hover, 
+  .btn-headerprimary[disabled]:hover, 
+  fieldset[disabled] .btn-headerprimary:hover, 
+  .btn-headerprimary.disabled:focus, 
+  .btn-headerprimary[disabled]:focus, 
+  fieldset[disabled] .btn-headerprimary:focus, 
+  .btn-headerprimary.disabled:active, 
+  .btn-headerprimary[disabled]:active, 
+  fieldset[disabled] .btn-headerprimary:active, 
+  .btn-headerprimary.disabled.active, 
+  .btn-headerprimary[disabled].active, 
+  fieldset[disabled] .btn-headerprimary.active { 
+    background-color: #778FCF; 
+    border-color: #778FCF; 
+  } 
+   
+  .btn-headerprimary .badge { 
+    color: #778FCF; 
+    background-color: #ffffff; 
   }
