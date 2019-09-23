@@ -24,7 +24,7 @@ db = client.unsheltereddb
 
 app = Flask(__name__)
 oauth = OAuth(app)
-gmaps = googlemaps.Client(key=os.environ.get('MAPS_APIKEY'))
+# gmaps = googlemaps.Client(key=os.environ.get('MAPS_APIKEY'))
 
 
 app.config['SECRET_KEY'] = os.environ['FLASK_SECRET_KEY']
