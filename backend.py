@@ -24,7 +24,12 @@ db = client.unsheltereddb
 
 app = Flask(__name__)
 oauth = OAuth(app)
-# gmaps = googlemaps.Client(key=os.environ.get('MAPS_APIKEY'))
+gmaps = None
+try:
+    gmaps = googlemaps.Client(key=os.environ.get('MAPS_APIKEY'))
+except ValueError as e:
+    gmaps = None
+    pass #ignore error
 
 
 app.config['SECRET_KEY'] = os.environ['FLASK_SECRET_KEY']
@@ -171,8 +176,8 @@ def getShelters(query=None):
         shelters = db.shelters.find(query)
 
     for shelter in shelters:
-        
-        shelter["mapURL"] = getMapURLForShelter(constructAddress(shelter), shelter['name'])
+        if gmaps is not None:
+            shelter["mapURL"] = getMapURLForShelter(constructAddress(shelter), shelter['name'])
         allShelters.append(shelter)
 
     return allShelters
