@@ -13,6 +13,7 @@ authlib = "*"
 six = "*"
 pymongo = "*"
 googlemaps = "*"
+dnspython = "*"
 
 [dev-packages]
 
